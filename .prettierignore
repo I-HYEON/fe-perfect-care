@@ -1,0 +1,4 @@
+# /*prettier 포맷팅 할 때 제외할 폴더,파일 목록들*/
+node_modules
+dist
+build
