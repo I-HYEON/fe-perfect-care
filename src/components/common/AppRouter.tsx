@@ -3,32 +3,151 @@ import ChatsPage from '@/pages/ChatsPage'
 import HomePage from '@/pages/HomePage'
 import PersonasPage from '@/pages/PersonasPage'
 import SettingsPage from '@/pages/SettingsPage'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from '@/pages/LoginPage'
 import PersonaProfilePage from '@/pages/PersonaProfilePage'
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage'
 import MyPage from '@/pages/MyPage'
-import AdminPage from '@/pages/AdminPage'
 import SignupPage from '@/pages/SignupPage'
 import TabBar from './TabBar'
+import { useAuthStore } from '@/stores/useAuthStore'
+import LoadingPage from '@/pages/LoadingPage'
+import DashboardPage from '@/pages/DashboardPage'
+
+interface ProtectedRouteProps {
+  children: React.ReactNode
+}
+
+// 보호 라우트 (로그인하지 않은 사용자는 접근 불가)
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  const { isAuthenticated, isLoading } = useAuthStore()
+
+  // 토큰은 있지만 인증 상태가 false인 경우 (새로고침 시)
+  // 이 경우는 axios 인터셉터나 PrivateRoute 컴포넌트에서 처리할 수도 있음
+
+  if (isLoading) {
+    return <LoadingPage />
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
+
+  return <>{children}</>
+}
+
+// 공개 라우트 (로그인한 사용자는 접근 불가)
+const PublicOnlyRoute = ({ children }: ProtectedRouteProps) => {
+  const { isAuthenticated, isLoading } = useAuthStore()
+
+  if (isLoading) {
+    return <LoadingPage />
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/chats" replace /> // 로그인된 사용자의 기본 페이지
+  }
+
+  return <>{children}</>
+}
 
 export default function AppRouter() {
+  const { isAuthenticated } = useAuthStore()
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/personas" element={<PersonasPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/chats" element={<ChatsPage />} />
-        <Route path="/chat/:personaId" element={<ChatPage />} />
-        <Route path="/persona-profile/:personaId" element={<PersonaProfilePage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/me" element={<MyPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/"
+          element={
+            <PublicOnlyRoute>
+              <HomePage />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicOnlyRoute>
+              <LoginPage />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicOnlyRoute>
+              <SignupPage />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route
+          path="/personas"
+          element={
+            <ProtectedRoute>
+              <PersonasPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <SettingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chats"
+          element={
+            <ProtectedRoute>
+              <ChatsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chat/:personaId"
+          element={
+            <ProtectedRoute>
+              <ChatPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/persona-profile/:personaId"
+          element={
+            <ProtectedRoute>
+              <PersonaProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <ProtectedRoute>
+              <ForgotPasswordPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/me"
+          element={
+            <ProtectedRoute>
+              <MyPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      <TabBar />
+      {/* TabBar는 인증된 사용자에게만 표시 */}
+      {isAuthenticated && <TabBar />}
     </>
   )
 }

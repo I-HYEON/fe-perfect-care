@@ -1,18 +1,10 @@
 import AnimatedCoffeeBean from '@/components/login/AnimatedCoffeeBean'
 import LoginForm from '@/components/login/LoginForm'
 import SocialLoginButtons from '@/components/login/SocialLoginButton'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function LoginPage() {
-  const [isLoading, setIsLoading] = useState(false)
-
-  // 로그인 성공 처리
-  const handleLoginSuccess = (data: any) => {
-    setIsLoading(false)
-    console.log('로그인 성공:', data)
-  }
-
+ 
   return (
     <div className="w-full flex h-full items-center justify-center bg-amber-50 overflow-hidden">
       <div className="hidden md:flex md:w-1/2 min-h-screen bg-amber-800 dark:bg-zinc-950">
@@ -33,11 +25,7 @@ export default function LoginPage() {
         </div>
 
         {/* 로그인 폼 */}
-        <LoginForm
-          onSuccess={handleLoginSuccess}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
+        <LoginForm />
 
         {/* 구분선 */}
         <div className="my-2 flex items-center">
@@ -47,7 +35,7 @@ export default function LoginPage() {
         </div>
 
         {/* 소셜 로그인 버튼 */}
-        <SocialLoginButtons setIsLoading={setIsLoading} />
+        <SocialLoginButtons />
 
         {/* 회원가입 링크 */}
         <div className="mt-4 text-center text-xs">

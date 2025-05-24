@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
+import { useAuthStore } from '@/stores/useAuthStore'
 
-interface SocialLoginButtonsProps {
-  setIsLoading: (loading: boolean) => void
-}
+export default function SocialLoginButtons() {
+  // zustand에서 로딩 상태 가져오기
+  const { setLoading } = useAuthStore()
 
-export default function SocialLoginButtons({ setIsLoading }: SocialLoginButtonsProps) {
   // 소셜 로그인 처리 함수
   const handleSocialLogin = (provider: string) => {
-    setIsLoading(true)
+    setLoading(true)
     console.log(`${provider} 로그인 시도`)
 
     // 여기에 소셜 로그인 로직을 넣어야 함
     setTimeout(() => {
       console.log(`${provider} 로그인 성공`)
-      setIsLoading(false)
+      setLoading(false)
     }, 1000)
   }
 
@@ -23,9 +23,14 @@ export default function SocialLoginButtons({ setIsLoading }: SocialLoginButtonsP
         type="button"
         variant="outline"
         className="w-full border-amber-200 bg-white text-amber-900 hover:bg-amber-100 dark:border-zinc-200 dark:hover:text-black dark:hover:bg-white"
-        onClick={() => handleSocialLogin("Google")}
+        onClick={() => handleSocialLogin('Google')}
       >
-        <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="mr-2 h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
             fill="#4285F4"
@@ -50,9 +55,14 @@ export default function SocialLoginButtons({ setIsLoading }: SocialLoginButtonsP
         type="button"
         variant="outline"
         className="w-full border-amber-200 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FDD835] dark:bg-[#FEE500] dark:hover:text-black dark:hover:bg-[#FDD835]"
-        onClick={() => handleSocialLogin("Kakao")}
+        onClick={() => handleSocialLogin('Kakao')}
       >
-        <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="mr-2 h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"

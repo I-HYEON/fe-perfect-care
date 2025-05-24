@@ -16,6 +16,8 @@ import {
 } from 'lucide-react'
 import { useAppStore } from '@/stores/useAppStore'
 import { useNavigate } from 'react-router-dom'
+import { logoutApi } from '@/api/auth/auth'
+import { toast } from 'sonner'
 
 export default function SettingsPage() {
   const theme = useAppStore((state) => state.theme)
@@ -23,18 +25,28 @@ export default function SettingsPage() {
   const toggleTheme = useAppStore((state) => state.toggleTheme)
   const toggleFontSize = useAppStore((state) => state.toggleFontSize)
   const [notifications, setNotifications] = useState(true)
-  const [sounds, setSounds] = useState(true)
+  const [sounds, setSounds] = useState(false)
   const navigate = useNavigate()
 
   const isDark = theme === 'dark'
   const isBig = fontSize === 'large'
 
   useEffect(() => {
-    console.log('보자', fontSize)
+    console.log('큰글씨 모드 적용 확인', fontSize)
   }, [fontSize])
 
+  const handleLogout = async () => {
+    try {
+      await logoutApi()
+      toast.success('로그아웃되었습니다')
+    } catch (error) {
+      // 에러가 있어도 클라이언트 측 로그아웃은 완료됨
+      toast.info('로그아웃되었습니다')
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 mb-12">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-14">
       <div className="mx-auto max-w-md px-4 py-4">
         {/* 헤더 */}
         <div className="mb-6">
@@ -61,7 +73,7 @@ export default function SettingsPage() {
               <div className="h-px bg-gray-200 dark:bg-gray-700" />
               <Button
                 variant="ghost"
-                onClick={() => navigate('/admin')}
+                onClick={() => navigate('/dashboard')}
                 className="w-full justify-start p-4 h-auto big:text-lg"
               >
                 <ChartBarBig className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
@@ -77,7 +89,9 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <Moon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  <Label htmlFor="dark-mode" className='text-sm big:text-lg'>다크 모드</Label>
+                  <Label htmlFor="dark-mode" className="text-sm big:text-lg">
+                    다크 모드
+                  </Label>
                 </div>
                 <Switch id="dark-mode" checked={isDark} onCheckedChange={toggleTheme} />
               </div>
@@ -85,7 +99,9 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3 text-xs">
                   <Scaling className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  <Label htmlFor="big-font-mode" className='text-sm big:text-lg'>큰글씨 모드</Label>
+                  <Label htmlFor="big-font-mode" className="text-sm big:text-lg">
+                    큰글씨 모드
+                  </Label>
                 </div>
                 <Switch id="big-font-mode" checked={isBig} onCheckedChange={toggleFontSize} />
               </div>
@@ -99,7 +115,9 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <Bell className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  <Label htmlFor="notifications" className='text-sm big:text-lg'>알림 받기</Label>
+                  <Label htmlFor="notifications" className="text-sm big:text-lg">
+                    알림 받기
+                  </Label>
                 </div>
                 <Switch
                   id="notifications"
@@ -111,9 +129,11 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <Volume2 className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  <Label htmlFor="sounds" className='text-sm big:text-lg'>소리</Label>
+                  <Label htmlFor="sounds" className="text-sm big:text-lg">
+                    소리
+                  </Label>
                 </div>
-                <Switch id="sounds" checked={sounds} onCheckedChange={setSounds} />
+                <Switch id="sounds" disabled checked={sounds} onCheckedChange={setSounds} />
               </div>
             </div>
           </div>
@@ -146,6 +166,7 @@ export default function SettingsPage() {
           {/* 로그아웃 버튼 */}
           <Button
             variant="outline"
+            onClick={handleLogout}
             className="w-full text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600 dark:border-slate-500 dark:text-slate-200 dark:hover:text-slate-950 dark:hover:bg-slate-400 big:text-lg"
           >
             <LogOut className="h-5 w-5 mr-2" />
