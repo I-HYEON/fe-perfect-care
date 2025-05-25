@@ -31,7 +31,7 @@ const dummyMessages: MessageType[] = [
   },
   {
     id: '3',
-    content: '그냥 지내요. 저 심심해요.',
+    content: '이퍼펙씨',
     senderId: 2, // current user
     receiverId: 1, // persona
     timestamp: new Date(2023, 5, 10, 14, 32),
@@ -39,7 +39,7 @@ const dummyMessages: MessageType[] = [
   },
   {
     id: '4',
-    content: '오늘 날씨가 정말 좋네요😊 밖에 나가볼 계획이 있으신가요?',
+    content: '오늘 점심은 뭘 드셨죠',
     senderId: 1, // persona
     receiverId: 2, // current user
     timestamp: new Date(2023, 5, 10, 14, 35),
@@ -47,12 +47,12 @@ const dummyMessages: MessageType[] = [
   },
   {
     id: '5',
-    content: '네 오후에 공원에 산책하러 갈 예정이에요',
-    senderId: 2, // current user
-    receiverId: 1, // persona
-    timestamp: new Date(2023, 5, 10, 14, 40),
-    isRead: false
-  }
+    content: '점심 식사 사진 한장 보내주세요',
+    senderId: 1, // persona
+    receiverId: 2, // current user
+    timestamp: new Date(2023, 5, 10, 14, 35),
+    isRead: true
+  },
 ]
 
 export default function ChatInterface({

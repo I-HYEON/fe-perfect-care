@@ -22,7 +22,7 @@ export default function SocialLoginButtons() {
       <Button
         type="button"
         variant="outline"
-        className="w-full border-amber-200 bg-white text-amber-900 hover:bg-amber-100 dark:border-zinc-200 dark:hover:text-black dark:hover:bg-white"
+        className="w-full border-amber-200 bg-white text-amber-900 hover:bg-amber-100 dark:bg-zinc-100 dark:border-zinc-200 dark:hover:text-black dark:hover:bg-white"
         onClick={() => handleSocialLogin('Google')}
       >
         <svg

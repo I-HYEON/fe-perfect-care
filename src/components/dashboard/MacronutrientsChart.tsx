@@ -43,7 +43,7 @@ export function MacronutrientsChart({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Donut className="h-5 w-5" />
-          매크로 영양소 비율
+          탄단지 영양소 비율
         </CardTitle>
       </CardHeader>
       <CardContent>

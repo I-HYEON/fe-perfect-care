@@ -73,14 +73,14 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-1">
-        <Label htmlFor="phone_number" className="text-amber-900 text-xs font-medium">
+        <Label htmlFor="phone_number" className="text-amber-900 dark:text-zinc-300 text-xs font-medium">
           핸드폰 번호
         </Label>
         <Input
           id="phone_number"
           type="tel"
           placeholder="01012345678"
-          className="bg-white border-amber-200 dark:bg-zinc-700 focus:border-orange-400 focus:ring-orange-400"
+          className="bg-white border-amber-200 dark:border-zinc-200 dark:bg-zinc-700 focus:border-orange-400 focus:ring-orange-400"
           {...register('phone_number', {
             required: '핸드폰 번호를 입력해주세요',
             pattern: {
@@ -96,7 +96,7 @@ export default function LoginForm() {
 
       <div className="space-y-1">
         <div className="flex items-center justify-between">
-          <Label htmlFor="password" className="text-amber-800 text-xs font-medium">
+          <Label htmlFor="password" className="text-amber-800 dark:text-zinc-300 text-xs font-medium">
             비밀번호
           </Label>
         </div>
@@ -105,7 +105,7 @@ export default function LoginForm() {
             id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="••••••••"
-            className="bg-white border-amber-200 dark:bg-zinc-700 focus:border-orange-400 focus:ring-orange-400"
+            className="bg-white border-amber-200 dark:border-zinc-200 dark:bg-zinc-700 focus:border-orange-400 focus:ring-orange-400"
             {...register('password', {
               required: '비밀번호를 입력해주세요',
               minLength: {
@@ -135,7 +135,7 @@ export default function LoginForm() {
             className="h-4 w-4 rounded border-amber-300 text-orange-600 focus:ring-orange-500"
             {...register('remember_me')}
           />
-          <label htmlFor="remember_me" className="ml-2 block text-amber-900">
+          <label htmlFor="remember_me" className="ml-2 block text-amber-900 dark:text-zinc-300">
             로그인 상태 유지
           </label>
         </div>
@@ -143,7 +143,7 @@ export default function LoginForm() {
         <button
           type="button"
           onClick={() => navigate('/forgot-password')}
-          className="font-medium text-orange-600 hover:text-orange-500 transition-colors"
+          className="font-medium text-orange-600 hover:text-orange-500 dark:text-zinc-50 transition-colors"
         >
           비밀번호를 잊으셨나요?
         </button>

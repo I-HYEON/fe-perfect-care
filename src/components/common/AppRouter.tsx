@@ -124,9 +124,9 @@ export default function AppRouter() {
         <Route
           path="/forgot-password"
           element={
-            <ProtectedRoute>
+            <PublicOnlyRoute>
               <ForgotPasswordPage />
-            </ProtectedRoute>
+            </PublicOnlyRoute>
           }
         />
         <Route

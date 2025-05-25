@@ -75,10 +75,10 @@ export default function PhoneVerification({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 text-amber-700 dark:text-zinc-200">
       {/* 핸드폰 번호 입력 필드 */}
       <div className="space-y-1">
-        <Label htmlFor="phoneNumber" className="text-xs text-amber-800">
+        <Label htmlFor="phoneNumber" className="text-xs ">
           휴대폰 번호 (아이디로 사용됩니다)
         </Label>
         <div className="flex gap-2">
@@ -86,7 +86,7 @@ export default function PhoneVerification({
             id="phoneNumber"
             type="tel"
             placeholder="01012345678"
-            className="border-amber-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
             {...register('phoneNumber', {
               required: '휴대폰 번호를 입력해주세요',
               pattern: {
@@ -99,7 +99,7 @@ export default function PhoneVerification({
           <Button
             type="button"
             variant="outline"
-            className="whitespace-nowrap border-amber-400 bg-amber-50 text-amber-700 hover:bg-amber-100"
+            className="whitespace-nowrap border-amber-400 bg-amber-50 hover:bg-amber-100"
             onClick={handleSendVerificationCode}
             disabled={sendingCode || (codeSent && isVerified)}
           >
@@ -113,7 +113,7 @@ export default function PhoneVerification({
       {codeSent && !isVerified && (
         <div className="space-y-1">
           <div className="flex items-center justify-between">
-            <Label htmlFor="verificationCode" className="text-amber-800">
+            <Label htmlFor="verificationCode" className="">
               인증번호
             </Label>
             {timerActive && <span className="text-xs text-red-500">{formatTime(timeLeft)}</span>}
@@ -123,7 +123,7 @@ export default function PhoneVerification({
               id="verificationCode"
               type="text"
               placeholder="인증번호 6자리"
-              className="border-amber-200 focus:border-amber-500 focus:ring-amber-500"
+              className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
               {...register('verificationCode', {
                 required: codeSent ? '인증번호를 입력해주세요' : false,
                 pattern: {
@@ -134,7 +134,7 @@ export default function PhoneVerification({
             />
             <Button
               type="button"
-              className="whitespace-nowrap bg-amber-600 text-white hover:bg-amber-700"
+              className="whitespace-nowrap bg-amber-600 dark:bg-amber-900 text-white hover:bg-amber-700"
               onClick={handleVerifyCode}
               disabled={verifyingCode || !timerActive}
             >

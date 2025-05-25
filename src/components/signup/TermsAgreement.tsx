@@ -39,21 +39,21 @@ export default function TermsAgreement({ register, errors, setValue, watch }: Te
   }
 
   return (
-    <div className="space-y-4 rounded-lg bg-amber-50 p-4">
+    <div className="space-y-4 rounded-lg bg-amber-50 dark:bg-zinc-950 p-4 text-amber-700 dark:text-zinc-200">
       {/* 전체 동의 체크박스 */}
       <div className="flex items-center space-x-2">
         <Checkbox
           id="allAgreed"
           checked={allAgreed}
           onCheckedChange={handleAllAgree}
-          className="border-amber-400 text-amber-600"
+          className="border-amber-400 dark:border-zinc-400"
         />
-        <Label htmlFor="allAgreed" className="font-medium text-amber-800">
+        <Label htmlFor="allAgreed" className="font-medium">
           모든 약관에 동의합니다
         </Label>
       </div>
 
-      <div className="h-px bg-amber-200" />
+      <div className="h-px bg-amber-200 dark:bg-slate-200" />
 
       {/* 필수 약관 동의 */}
       <div className="flex items-center space-x-2">
@@ -61,13 +61,13 @@ export default function TermsAgreement({ register, errors, setValue, watch }: Te
           id="termsAgreed"
           checked={termsAgreed}
           onCheckedChange={(checked) => setValue('termsAgreed', checked, { shouldValidate: true })}
-          className="border-amber-400 text-amber-600"
+          className="border-amber-400 dark:border-zinc-400"
           {...register('termsAgreed', {
             required: '이용약관 동의는 필수입니다'
           })}
         />
         <div className="flex flex-wrap items-center gap-1">
-          <Label htmlFor="termsAgreed" className="text-sm text-amber-700">
+          <Label htmlFor="termsAgreed" className="text-sm ">
             <span className="text-red-500">*</span> 이용약관 동의
           </Label>
           <Link to="/terms" className="text-xs text-amber-500 underline">
@@ -87,13 +87,13 @@ export default function TermsAgreement({ register, errors, setValue, watch }: Te
           onCheckedChange={(checked) =>
             setValue('privacyAgreed', checked, { shouldValidate: true })
           }
-          className="border-amber-400 text-amber-600"
+          className="border-amber-400 dark:border-zinc-400"
           {...register('privacyAgreed', {
             required: '개인정보 처리방침 동의는 필수입니다'
           })}
         />
         <div className="flex flex-wrap items-center gap-1">
-          <Label htmlFor="privacyAgreed" className="text-sm text-amber-700">
+          <Label htmlFor="privacyAgreed" className="text-sm ">
             <span className="text-red-500">*</span> 개인정보 처리방침 동의
           </Label>
           <Link to="/privacy" className="text-xs text-amber-500 underline">
@@ -111,10 +111,10 @@ export default function TermsAgreement({ register, errors, setValue, watch }: Te
           id="marketingAgreed"
           checked={marketingAgreed}
           onCheckedChange={(checked) => setValue('marketingAgreed', checked)}
-          className="border-amber-400 text-amber-600"
+          className="border-amber-400 dark:border-zinc-400"
           {...register('marketingAgreed')}
         />
-        <Label htmlFor="marketingAgreed" className="text-sm text-amber-700">
+        <Label htmlFor="marketingAgreed" className="text-sm ">
           (선택) 마케팅 정보 수신 동의
         </Label>
       </div>

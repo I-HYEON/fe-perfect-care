@@ -18,7 +18,7 @@ const personas: Persona[] = [
   },
   {
     id: 2,
-    name: '카리나',
+    name: '이퍼펙',
     description: '운동은 매일매일...',
     avatar: '/placeholder1.png',
     color: 'blue',
@@ -27,7 +27,7 @@ const personas: Persona[] = [
   },
   {
     id: 3,
-    name: '장원영',
+    name: '김운동',
     description: '영양, 운동, 건강',
     avatar: '/placeholder2.png',
     color: 'slate',

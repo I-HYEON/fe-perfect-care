@@ -9,9 +9,9 @@ const chatRooms = [
   {
     id: 1,
     personaId: 3,
-    personaName: '김복지',
+    personaName: '이퍼펙',
     avatar: '/placeholder1.png',
-    lastMessage: '오늘은 이제 그만드셔도 될 것 같아요요',
+    lastMessage: '점심 식사 사진 한장 보내주세요',
     timestamp: '방금 전',
     unread: 2
   },
@@ -22,15 +22,6 @@ const chatRooms = [
     avatar: '/placeholder2.png',
     lastMessage: '오늘 혈압약 아직 안드셨죠? 빨리 드세요',
     timestamp: '10분 전',
-    unread: 0
-  },
-  {
-    id: 3,
-    personaId: 7,
-    personaName: '최요리',
-    avatar: '/placeholder3.png',
-    lastMessage: '파스타 소스에 바질과 올리브 오일을 넣으면 풍미가 더 좋아집니다.',
-    timestamp: '1시간 전',
     unread: 0
   }
 ]

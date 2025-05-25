@@ -4,6 +4,7 @@ import { FoodCategoryBreakdown } from '@/components/dashboard/FoodCategoryBreakd
 import { MacronutrientsChart } from '@/components/dashboard/MacronutrientsChart'
 import { NutritionGoals } from '@/components/dashboard/NutritionGoals'
 import { RecentMeals } from '@/components/dashboard/RecentMeals'
+import { FadeIn } from '@/components/ui/pade-in'
 import {
   FoodCategory,
   CookingMethod,
@@ -177,39 +178,40 @@ const nutritionGoals = [
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* 헤더 */}
-        <DashboardHeader />
+      <FadeIn>
+        <div className="max-w-7xl mx-auto space-y-6">
+          {/* 헤더 */}
+          <DashboardHeader />
 
-        {/* 메인 대시보드 그리드 */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* 왼쪽 컬럼 */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* 칼로리 요약과 매크로 영양소 차트 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CaloriesSummary consumed={1650} target={2000} remaining={350} />
-              <MacronutrientsChart
-                macronutrients={sampleMacronutrients}
-                carbPercentage={45}
-                proteinPercentage={25}
-                fatPercentage={30}
-              />
+          {/* 메인 대시보드 그리드 */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* 왼쪽 컬럼 */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* 칼로리 요약과 매크로 영양소 차트 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <MacronutrientsChart
+                  macronutrients={sampleMacronutrients}
+                  carbPercentage={45}
+                  proteinPercentage={25}
+                  fatPercentage={30}
+                />
+                <CaloriesSummary consumed={1650} target={2000} remaining={350} />
+              </div>
+              {/* 음식 카테고리 분석 */}
+              <FoodCategoryBreakdown categoryData={categoryData} />
             </div>
 
-            {/* 음식 카테고리 분석 */}
-            <FoodCategoryBreakdown categoryData={categoryData} />
-          </div>
+            {/* 오른쪽 컬럼 */}
+            <div className="space-y-6">
+              {/* 최근 식단 */}
+              <RecentMeals meals={recentMeals} />
 
-          {/* 오른쪽 컬럼 */}
-          <div className="space-y-6">
-            {/* 최근 식단 */}
-            <RecentMeals meals={recentMeals} />
-
-            {/* 영양소 목표 현황 */}
-            <NutritionGoals goals={nutritionGoals} />
+              {/* 영양소 목표 현황 */}
+              <NutritionGoals goals={nutritionGoals} />
+            </div>
           </div>
         </div>
-      </div>
+      </FadeIn>
     </div>
   )
 }

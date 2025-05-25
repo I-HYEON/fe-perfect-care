@@ -68,17 +68,17 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-amber-700 dark:text-zinc-200">
       {/* 이름 입력 필드 */}
       <div className="space-y-1">
-        <Label htmlFor="name" className="text-xs text-amber-800">
+        <Label htmlFor="name" className="text-xs">
           이름
         </Label>
         <Input
           id="name"
           type="text"
           placeholder="김케어"
-          className="border-amber-200 focus:border-amber-500 focus:ring-amber-500"
+          className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
           {...register('name', {
             required: '이름을 입력해주세요',
             minLength: {
@@ -100,7 +100,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
 
       {/* 비밀번호 입력 필드 */}
       <div className="space-y-1">
-        <Label htmlFor="password" className="text-xs text-amber-800">
+        <Label htmlFor="password" className="text-xs">
           비밀번호
         </Label>
         <div className="relative">
@@ -108,7 +108,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
             id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="••••••••"
-            className="border-amber-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
             {...register('password', {
               required: '비밀번호를 입력해주세요',
               minLength: {
@@ -130,12 +130,12 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
           </button>
         </div>
         {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
-        <p className="text-left text-xs text-amber-600">영문, 숫자, 특수문자를 포함한 8자 이상</p>
+        <p className="text-left text-xs">영문, 숫자, 특수문자를 포함한 8자 이상</p>
       </div>
 
       {/* 비밀번호 확인 입력 필드 */}
       <div className="space-y-1">
-        <Label htmlFor="confirmPassword" className="text-xs text-amber-800">
+        <Label htmlFor="confirmPassword" className="text-xs">
           비밀번호 확인
         </Label>
         <div className="relative">
@@ -143,7 +143,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
             id="confirmPassword"
             type={showConfirmPassword ? 'text' : 'password'}
             placeholder="••••••••"
-            className="border-amber-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
             {...register('confirmPassword', {
               required: '비밀번호 확인을 입력해주세요',
               validate: (value) => value === password || '비밀번호가 일치하지 않습니다'
@@ -169,7 +169,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
       <Button
         type="submit"
         disabled={isLoading || !isVerified}
-        className="w-full bg-amber-600 text-white hover:bg-amber-700"
+        className="w-full bg-amber-600 dark:bg-zinc-200 text-white dark:text-black hover:bg-amber-700"
       >
         {isLoading ? '처리 중...' : '회원가입'}
       </Button>
