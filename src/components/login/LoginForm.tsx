@@ -65,7 +65,7 @@ export default function LoginForm() {
       } else {
         // 네트워크 에러 등 기타 에러
         const message = error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
-        toast.error('서버 에러: ' + message)
+        toast.error('서버 확인이 필요합니다. ' + message)
       }
     }
   }

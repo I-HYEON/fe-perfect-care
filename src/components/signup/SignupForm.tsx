@@ -78,7 +78,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
           id="name"
           type="text"
           placeholder="김케어"
-          className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
+          className="border-amber-200 bg-white dark:border-zinc-200 dark:bg-zinc-700 focus:border-amber-500 focus:ring-amber-500"
           {...register('name', {
             required: '이름을 입력해주세요',
             minLength: {
@@ -108,7 +108,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
             id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="••••••••"
-            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 bg-white dark:border-zinc-200 dark:bg-zinc-700 focus:border-amber-500 focus:ring-amber-500"
             {...register('password', {
               required: '비밀번호를 입력해주세요',
               minLength: {
@@ -143,7 +143,7 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
             id="confirmPassword"
             type={showConfirmPassword ? 'text' : 'password'}
             placeholder="••••••••"
-            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 bg-white dark:border-zinc-200 dark:bg-zinc-700 focus:border-amber-500 focus:ring-amber-500"
             {...register('confirmPassword', {
               required: '비밀번호 확인을 입력해주세요',
               validate: (value) => value === password || '비밀번호가 일치하지 않습니다'

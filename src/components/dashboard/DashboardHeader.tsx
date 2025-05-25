@@ -4,12 +4,12 @@ import { Card, CardContent } from "@/components/ui/card"
 export function DashboardHeader() {
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-left">
-        <div className="text-center">
+      <div className="flex flex-col sm:flex-row justify-between gap-4">
+        <div className="text-center sm:text-left">
           <div className="text-xl sm:text-lg font-bold text-gray-900 dark:text-white">Dashboard</div>
           <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">오늘의 영양 섭취 현황을 확인하세요</p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mx-auto sm:mx-0">
           <Calendar className="h-4 w-4" />
           <span>{new Date().toLocaleDateString("ko-KR")}</span>
         </div>

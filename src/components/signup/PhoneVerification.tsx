@@ -86,7 +86,7 @@ export default function PhoneVerification({
             id="phoneNumber"
             type="tel"
             placeholder="01012345678"
-            className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
+            className="border-amber-200 bg-white dark:border-zinc-200 dark:bg-zinc-700 focus:border-amber-500 focus:ring-amber-500"
             {...register('phoneNumber', {
               required: '휴대폰 번호를 입력해주세요',
               pattern: {
@@ -123,7 +123,7 @@ export default function PhoneVerification({
               id="verificationCode"
               type="text"
               placeholder="인증번호 6자리"
-              className="border-amber-200 dark:border-zinc-200 focus:border-amber-500 focus:ring-amber-500"
+              className="border-amber-200 bg-white dark:border-zinc-200 dark:bg-zinc-700 focus:border-amber-500 focus:ring-amber-500"
               {...register('verificationCode', {
                 required: codeSent ? '인증번호를 입력해주세요' : false,
                 pattern: {
