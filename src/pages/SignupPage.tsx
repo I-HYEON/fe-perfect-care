@@ -1,16 +1,13 @@
 import SignupForm from '@/components/signup/SignupForm'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function SignupPage() {
-  // 회원가입 상태 관리
-  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   // 회원가입 성공 처리
-  const handleSignupSuccess = (data: any) => {
-    setIsLoading(false)
-    console.log('회원가입 성공:', data)
-    // 추후 회원가입 성공 후 로직 추가 (예: 로그인 페이지로 리다이렉트)
+  const handleSignupSuccess = () => {
+    console.log('회원가입 성공')
+    navigate('/dashboard')
   }
   return (
     <div className="w-full flex h-full items-center justify-center overflow-hidden bg-amber-50 text-amber-700 dark:bg-zinc-800 dark:text-zinc-100">
@@ -26,11 +23,7 @@ export default function SignupPage() {
         </div>
 
         {/* 회원가입 폼 */}
-        <SignupForm
-          onSuccess={handleSignupSuccess}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-        />
+        <SignupForm onSuccess={handleSignupSuccess} />
 
         {/* 로그인 페이지 링크 */}
         <div className="mt-2 text-center text-sm">

@@ -9,7 +9,7 @@ interface AuthState {
   user: User | null
   isAuthenticated: boolean
   isLoading: boolean
-  
+
   // 액션들
   setAccessToken: (token: string | null) => void
   setUser: (user: User | null) => void
@@ -28,25 +28,25 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       isAuthenticated: false,
       isLoading: false,
-      
+
       // 액세스 토큰 설정
       setAccessToken: (token) => {
-        set({ 
+        set({
           accessToken: token,
           isAuthenticated: !!token
         })
       },
-      
+
       // 사용자 정보 설정
       setUser: (user) => {
         set({ user })
       },
-      
+
       // 로딩 상태 설정
       setLoading: (loading) => {
         set({ isLoading: loading })
       },
-      
+
       // 로그인 처리
       login: (token, user) => {
         set({
@@ -56,7 +56,7 @@ export const useAuthStore = create<AuthState>()(
           isLoading: false
         })
       },
-      
+
       // 로그아웃 처리
       logout: () => {
         set({
@@ -66,7 +66,7 @@ export const useAuthStore = create<AuthState>()(
           isLoading: false
         })
       },
-      
+
       // 인증 정보 완전 삭제 (에러 시 사용)
       clearAuth: () => {
         set({

@@ -39,7 +39,7 @@ export function MacronutrientsChart({
   ]
 
   return (
-    <Card className="h-full">
+    <Card className="h-full border-none shadow-none">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Donut className="h-5 w-5" />

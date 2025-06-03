@@ -1,5 +1,4 @@
 import ChatPage from '@/pages/ChatPage'
-import ChatsPage from '@/pages/ChatsPage'
 import HomePage from '@/pages/HomePage'
 import PersonasPage from '@/pages/PersonasPage'
 import SettingsPage from '@/pages/SettingsPage'
@@ -7,12 +6,13 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from '@/pages/LoginPage'
 import PersonaProfilePage from '@/pages/PersonaProfilePage'
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage'
-import MyPage from '@/pages/MyPage'
 import SignupPage from '@/pages/SignupPage'
 import TabBar from './TabBar'
 import { useAuthStore } from '@/stores/useAuthStore'
 import LoadingPage from '@/pages/LoadingPage'
 import DashboardPage from '@/pages/DashboardPage'
+import CalendarPage from '@/pages/CalendarPage'
+import MyPage from '@/pages/MyPage'
 
 interface ProtectedRouteProps {
   children: React.ReactNode
@@ -45,7 +45,7 @@ const PublicOnlyRoute = ({ children }: ProtectedRouteProps) => {
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/chats" replace /> // 로그인된 사용자의 기본 페이지
+    return <Navigate to="/me" replace /> // 로그인된 사용자의 기본 페이지
   }
 
   return <>{children}</>
@@ -57,14 +57,7 @@ export default function AppRouter() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PublicOnlyRoute>
-              <HomePage />
-            </PublicOnlyRoute>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/login"
           element={
@@ -98,15 +91,7 @@ export default function AppRouter() {
           }
         />
         <Route
-          path="/chats"
-          element={
-            <ProtectedRoute>
-              <ChatsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/chat/:personaId"
+          path="/chat"
           element={
             <ProtectedRoute>
               <ChatPage />
@@ -142,6 +127,14 @@ export default function AppRouter() {
           element={
             <ProtectedRoute>
               <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <ProtectedRoute>
+              <CalendarPage />
             </ProtectedRoute>
           }
         />

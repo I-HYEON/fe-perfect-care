@@ -39,7 +39,7 @@ export default function TermsAgreement({ register, errors, setValue, watch }: Te
   }
 
   return (
-    <div className="space-y-4 rounded-lg bg-amber-50 dark:bg-zinc-950 p-4 text-amber-700 dark:text-zinc-200">
+    <div className="space-y-4 rounded-lg bg-amber-50 dark:bg-zinc-900 p-4 text-amber-700 dark:text-zinc-200">
       {/* 전체 동의 체크박스 */}
       <div className="flex items-center space-x-2">
         <Checkbox

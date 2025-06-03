@@ -13,7 +13,7 @@ export function CaloriesSummary({ consumed, target, remaining }: CaloriesSummary
   const percentage = Math.min((consumed / target) * 100, 100)
 
   return (
-    <Card className="h-full">
+    <Card className="h-full border-none shadow-none">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Flame className="h-5 w-5 text-orange-500" />

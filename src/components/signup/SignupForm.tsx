@@ -6,8 +6,10 @@ import { Label } from '@/components/ui/label'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import PhoneVerification from './PhoneVerification'
 import TermsAgreement from './TermsAgreement'
+import { registerApi, RegisterRequest } from '@/api/auth/auth'
+import { AxiosError } from 'axios'
 
-// 회원가입 폼 데이터 타입 정의
+// 프론트엔드 폼 데이터 타입 (모든 필드 포함)
 interface SignupFormData {
   name: string
   phoneNumber: string
@@ -19,20 +21,24 @@ interface SignupFormData {
   marketingAgreed: boolean
 }
 
-// 컴포넌트 props 타입 정의
+// 컴포넌트 props 타입 정의 - 서버 전송 데이터만 받도록 수정
 interface SignupFormProps {
-  onSuccess: (data: SignupFormData) => void
-  isLoading: boolean
-  setIsLoading: (loading: boolean) => void
+  onSuccess: () => void
 }
 
-export default function SignupForm({ onSuccess, isLoading, setIsLoading }: SignupFormProps) {
+export default function SignupForm({ onSuccess }: SignupFormProps) {
   // 비밀번호 표시 상태 관리
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   // 인증 상태 관리
   const [isVerified, setIsVerified] = useState(false)
+
+  // 로딩 상태
+  const [isLoading, setIsLoading] = useState(false)
+
+  // 에러 상태
+  const [apiError, setApiError] = useState<string>('')
 
   // react-hook-form 설정
   const {
@@ -58,17 +64,51 @@ export default function SignupForm({ onSuccess, isLoading, setIsLoading }: Signu
   const password = watch('password')
 
   // 폼 제출 처리
-  const onSubmit = (data: SignupFormData) => {
-    setIsLoading(true)
-    // 실제 API 요청 대신 콘솔 출력 및 성공 처리
-    console.log('회원가입 시도:', data)
-    setTimeout(() => {
-      onSuccess(data)
-    }, 1000)
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      setIsLoading(true)
+      setApiError('') // 이전 에러 초기화
+
+      // 서버로 보낼 데이터만 추출하고 snake_case로 변환
+      const registerData: RegisterRequest = {
+        name: data.name,
+        phone_number: data.phoneNumber,
+        password: data.password
+      }
+
+      console.log('회원가입 API 요청:', registerData)
+
+      // 실제 API 요청
+      const response = await registerApi(registerData)
+
+      console.log('회원가입 성공:', response)
+
+      // 성공 시 콜백 실행 (registerApi에서 자동 로그인 처리됨)
+      onSuccess()
+    } catch (error) {
+      console.error('회원가입 실패:', error)
+
+      // 에러 메시지 처리
+      if (error instanceof AxiosError) {
+        const errorMessage = error.response?.data?.message || '회원가입에 실패했습니다.'
+        setApiError(errorMessage)
+      } else {
+        setApiError('네트워크 오류가 발생했습니다.')
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-amber-700 dark:text-zinc-200">
+      {/* API 에러 메시지 표시 */}
+      {apiError && (
+        <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+          {apiError}
+        </div>
+      )}
+
       {/* 이름 입력 필드 */}
       <div className="space-y-1">
         <Label htmlFor="name" className="text-xs">

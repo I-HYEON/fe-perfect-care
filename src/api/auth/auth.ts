@@ -11,7 +11,7 @@ interface LoginRequest {
 }
 
 // 회원가입 요청 타입
-interface RegisterRequest {
+export interface RegisterRequest {
   phone_number: string
   password: string
   name: string
@@ -52,7 +52,7 @@ export const registerApi = async (userData: RegisterRequest): Promise<LoginRespo
   try {
     useAuthStore.getState().setLoading(true)
 
-    const response = await apiClient.post<LoginResponse>('/auth/register', userData)
+    const response = await apiClient.post<LoginResponse>('/users', userData)
 
     // 회원가입 성공 시에도 자동 로그인 처리
     const { access_token, user } = response.data.result

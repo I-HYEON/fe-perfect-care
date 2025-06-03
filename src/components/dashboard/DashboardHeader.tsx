@@ -1,22 +1,27 @@
-import { Calendar, Target, TrendingUp } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { AlignJustify } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 export function DashboardHeader() {
+  const navigate = useNavigate()
+  
+  const handleSettingsButtonClick = () => {
+    navigate("/settings")
+  }
+
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row justify-between gap-4">
-        <div className="text-center sm:text-left">
+      <div className="flex justify-between items-center gap-4">
+        <div className="text-left">
           <div className="text-xl sm:text-lg font-bold text-gray-900 dark:text-white">Dashboard</div>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">오늘의 영양 섭취 현황을 확인하세요</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">나의 식습관을 한눈에 알아보세요</p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mx-auto sm:mx-0">
-          <Calendar className="h-4 w-4" />
-          <span>{new Date().toLocaleDateString("ko-KR")}</span>
+        <div className="cursor-pointer" onClick={handleSettingsButtonClick}>
+          <AlignJustify className="h-4 w-4" />
         </div>
       </div>
 
       {/* 빠른 통계 카드들 */}
-      <div className="grid grid-cols-3 gap-4">
+      {/* <div className="grid grid-cols-3 gap-4">
         <Card className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border-blue-200 dark:border-blue-800 h-fit">
           <CardContent className="p-4 mx-auto">
             <div className="flex items-center gap-3">
@@ -58,7 +63,7 @@ export function DashboardHeader() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </div> */}
     </div>
   )
 }

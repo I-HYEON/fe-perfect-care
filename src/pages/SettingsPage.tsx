@@ -12,7 +12,10 @@ import {
   LogOut,
   Scaling,
   User2,
-  ChartBarBig
+  ChartBarBig,
+  ArrowLeft,
+  ArrowRight,
+  Home
 } from 'lucide-react'
 import { useAppStore } from '@/stores/useAppStore'
 import { useNavigate } from 'react-router-dom'
@@ -35,6 +38,10 @@ export default function SettingsPage() {
     console.log('큰글씨 모드 적용 확인', fontSize)
   }, [fontSize])
 
+  const handleHome = () => {
+    navigate("/dashboard")
+  }
+
   const handleLogout = async () => {
     try {
       await logoutApi()
@@ -46,21 +53,22 @@ export default function SettingsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-14">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-4 pb-14">
       <div className="mx-auto max-w-md px-4 py-4">
         {/* 헤더 */}
-        <div className="mb-6">
+        <div className="mb-6 flex justify-between">
+          <div className='cursor-pointer' onClick={() => navigate(-1)}>
+            <ArrowLeft/>
+          </div>
           <div className="text-xl font-bold text-gray-900 dark:text-white big:text-2xl">설정</div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 big:text-xl">
-            앱 설정을 관리하세요
-          </p>
+          <div className='invisible'><ArrowRight/></div>
         </div>
 
         {/* 설정 섹션 */}
         <div className="space-y-6">
           {/* 내 설정 */}
           <div className="space-y-3">
-            {/* <h2 className="text-sm text-left text-gray-900 dark:text-white">내 정보</h2> */}
+            <h2 className="text-sm text-left text-gray-900 dark:text-white big:text-lg">내 정보</h2>
             <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
               <Button
                 variant="ghost"
@@ -171,6 +179,16 @@ export default function SettingsPage() {
           >
             <LogOut className="h-5 w-5 mr-2" />
             로그아웃
+          </Button>
+
+          {/* 홈으로 가기 버튼 */}
+          <Button
+            variant="outline"
+            onClick={handleHome}
+            className="w-full big:text-lg"
+          >
+            <Home className="h-5 w-5 mr-2" />
+            돌아가기
           </Button>
         </div>
       </div>
