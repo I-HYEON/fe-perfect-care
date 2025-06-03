@@ -20,7 +20,10 @@ export default function ChatInputArea({ onSendMessage }:ChatInputAreaProps) {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault()
+      // 여기서 바로 handleSendMessage() 호출하지 않고 비동기적으로 처리
+    setTimeout(() => {
       handleSendMessage()
+    }, 0)
     }
   }
 
