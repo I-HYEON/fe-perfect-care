@@ -18,7 +18,7 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
       {/* Desktop/Tablet Card */}
       <div
         className={`
-        hidden sm:block
+        hidden lg:block
         bg-card border rounded-lg p-3 space-y-3 transition-all hover:shadow-md
         ${isToday ? "ring-2 ring-purple-500 dark:ring-purple-400" : ""}
       `}
@@ -50,7 +50,7 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
       {/* Mobile Card */}
       <div
         className={`
-        block sm:hidden
+        block lg:hidden
         bg-zinc-50 dark:bg-zinc-900 rounded-xs p-3 transition-all hover:shadow-md
         min-h-24
         ${isToday ? "ring-2 ring-purple-500 dark:ring-purple-400" : ""}

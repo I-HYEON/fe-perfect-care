@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import ChatInterface from '@/components/chat/ChatInterface'
 
 const fakePersona = {
-  name: '케어메이트',
+  name: '댕코치',
   avatar: '/placeholder.png',
   description: '2025년 6월 1일',
   color: 'yellow'

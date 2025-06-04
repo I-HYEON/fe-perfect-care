@@ -6,7 +6,7 @@ import { useAuthStore } from '@/stores/useAuthStore'
 
 export function UserInfoCard() {
   const [weightVisible, setWeightVisible] = useState(false)
-  const { user } = useAuthStore()
+  const user  = useAuthStore(state=>state.user)
 
   return (
     <Card className="border-none shadow-none bg-white dark:bg-slate-800">

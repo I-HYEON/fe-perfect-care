@@ -2,6 +2,8 @@ import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import burgerImg from "@/assets/burger.jpeg"
 import pastaImg from "@/assets/pasta.jpg"
+import { useState } from "react"
+import BottomSheet from "./BottomSheet"
 
 export default function MealStack() {
   const photos = [
@@ -19,23 +21,21 @@ export default function MealStack() {
       id: 3,
       src: burgerImg,
       alt: "Street photo 3",
-    },
-    {
-      id: 4,
-      src: pastaImg,
-      alt: "Nature photo 4",
-    },
-    {
-      id: 5,
-      src: burgerImg,
-      alt: "Architecture photo 5",
-    },
+    }
   ]
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // 바텀 시트 열기
+  const openSheet = () => {
+    setIsMenuOpen(true)
+    document.body.style.overflow = "hidden" // 배경 스크롤 방지
+  }
 
   return (
     <div className="flex items-center justify-center bg-white dark:bg-slate-900 p-8">
       <div className="relative">
-        <div className="text-center mb-4 text-gray-800">Today's meals?<span className="text-muted-foreground"> {photos.length}끼</span></div>
+        <div className="text-center mb-4 text-gray-800 dark:text-gray-200">Today's meals?<span className="text-muted-foreground"> ({photos.length})</span></div>
 
         <div className="flex items-center space-x-[-40px]">
           {photos.map((photo, index) => (
@@ -64,6 +64,7 @@ export default function MealStack() {
           >
             <Button
               variant="outline"
+              onClick={openSheet}
               className="w-40 h-48 bg-white border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-3"
             >
               <div className="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center transition-colors duration-300">
@@ -74,6 +75,8 @@ export default function MealStack() {
           </div>
         </div>
       </div>
+
+      {isMenuOpen && <BottomSheet isOpen={isMenuOpen} setIsOpen={setIsMenuOpen}/>}
     </div>
   )
 }

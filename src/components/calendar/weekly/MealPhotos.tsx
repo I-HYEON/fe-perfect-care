@@ -23,7 +23,7 @@ export function MealPhotos({ meals }: MealPhotosProps) {
   const [mainMeal, ...otherMeals] = mealEntries
 
   return (
-    <div className="relative w-16 h-16 mx-auto">
+    <div className="relative w-16 h-16 lg:w-32 lg:h-32 mx-auto">
       {/* Background stacked photos */}
       {otherMeals.length > 0 && (
         <>
@@ -37,7 +37,7 @@ export function MealPhotos({ meals }: MealPhotosProps) {
       )}
 
       {/* Main photo */}
-      <div className="relative w-16 h-16 rounded-lg overflow-hidden border-2 border-background shadow-sm">
+      <div className="relative w-16 h-16 lg:w-32 lg:h-32 rounded-lg overflow-hidden border-2 border-background shadow-sm">
         <img src={mainMeal[1] || foodImage} alt={`${mainMeal[0]} meal`} className="object-cover" />
       </div>
 
