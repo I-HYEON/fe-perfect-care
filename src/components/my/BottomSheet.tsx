@@ -1,16 +1,16 @@
-import type React from "react"
+import type React from 'react'
 
-import { useRef, useEffect } from "react"
-import { X, Home, Settings, User, Bell, Search, Pencil, ForkKnife } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useRef, useEffect } from 'react'
+import { X, User, Search, Pencil, ForkKnife } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface BottomSheetProps {
-    isOpen: boolean,
-    setIsOpen: (isOpen:boolean) => void
+  isOpen: boolean
+  setIsOpen: (isOpen: boolean) => void
 }
 
-export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
+export default function BottomSheet({ isOpen, setIsOpen }: BottomSheetProps) {
   const sheetRef = useRef<HTMLDivElement>(null)
   const startY = useRef<number | null>(null)
   const currentY = useRef<number | null>(null)
@@ -18,7 +18,7 @@ export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
   // 바텀 시트 닫기
   const closeSheet = () => {
     setIsOpen(false)
-    document.body.style.overflow = "" // 배경 스크롤 복원
+    document.body.style.overflow = '' // 배경 스크롤 복원
   }
 
   // 터치 이벤트 핸들러 (모바일 슬라이드 닫기)
@@ -49,7 +49,7 @@ export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
       closeSheet()
     } else if (sheetRef.current) {
       // 원위치로 돌아가기
-      sheetRef.current.style.transform = "translateY(0)"
+      sheetRef.current.style.transform = 'translateY(0)'
     }
 
     startY.current = null
@@ -65,28 +65,28 @@ export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
     }
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isOpen])
 
   // ESC 키로 닫기
   useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         closeSheet()
       }
     }
 
     if (isOpen) {
-      document.addEventListener("keydown", handleEscKey)
+      document.addEventListener('keydown', handleEscKey)
     }
 
     return () => {
-      document.removeEventListener("keydown", handleEscKey)
+      document.removeEventListener('keydown', handleEscKey)
     }
   }, [isOpen])
 
@@ -95,8 +95,8 @@ export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
       {/* 오버레이 */}
       <div
         className={cn(
-          "fixed inset-0 bg-black/50 z-40 transition-opacity duration-300",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
+          'fixed inset-0 bg-black/50 z-40 transition-opacity duration-300',
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )}
       />
 
@@ -104,10 +104,10 @@ export default function BottomSheet({isOpen, setIsOpen}:BottomSheetProps) {
       <div
         ref={sheetRef}
         className={cn(
-          "fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg p-6",
-          "transform transition-transform duration-300 ease-in-out",
-          "max-h-[80vh] overflow-y-auto",
-          isOpen ? "translate-y-0" : "translate-y-full",
+          'fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 rounded-t-2xl shadow-lg p-6',
+          'transform transition-transform duration-300 ease-in-out',
+          'max-h-[80vh] overflow-y-auto',
+          isOpen ? 'translate-y-0' : 'translate-y-full'
         )}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
