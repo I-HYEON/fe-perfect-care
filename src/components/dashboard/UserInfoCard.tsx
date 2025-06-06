@@ -20,7 +20,7 @@ export function UserInfoCard() {
       <CardContent>
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl flex items-center gap-3">
-            <div className="bg-purple-100 dark:bg-purple-900 p-2 rounded-full">
+            <div className="bg-purple-100 dark:bg-purple-900 p-2 rounded-full hidden sm:block">
               <Smile className="h-5 w-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div className="text-left">
@@ -29,7 +29,7 @@ export function UserInfoCard() {
             </div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl flex items-center gap-3">
-            <div className="bg-blue-100 dark:bg-blue-900 p-2 rounded-full">
+            <div className="bg-blue-100 dark:bg-blue-900 p-2 rounded-full hidden sm:block">
               <Scale className="h-5 w-5 text-blue-600 dark:text-blue-400" />
             </div>
             <div className="text-left">
@@ -49,7 +49,7 @@ export function UserInfoCard() {
           </div>
 
           <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl flex items-center gap-3">
-            <div className="bg-green-100 dark:bg-green-900 p-2 rounded-full">
+            <div className="bg-green-100 dark:bg-green-900 p-2 rounded-full hidden sm:block">
               <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
             </div>
             <div className="text-left">
