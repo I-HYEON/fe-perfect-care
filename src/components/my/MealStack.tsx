@@ -33,7 +33,7 @@ export default function MealStack() {
   }
 
   return (
-    <div className="flex items-center justify-center bg-white dark:bg-slate-900 p-8">
+    <div className="flex items-center justify-center dark:bg-slate-900 p-4 border border-white rounded-2xl">
       <div className="relative">
         <div className="text-center mb-4 text-gray-800 dark:text-gray-200">Today's meals?<span className="text-muted-foreground"> ({photos.length})</span></div>
 
@@ -47,7 +47,7 @@ export default function MealStack() {
                 zIndex: photos.length - index,
               }}
             >
-              <div className="relative w-40 h-48 bg-white dark:bg-black p-2 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-32 h-38 md:w-40 md:h-48 bg-white dark:bg-black p-2 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img src={photo.src || "/placeholder.svg"} alt={photo.alt} className="object-cover rounded-md" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg" />
               </div>
@@ -65,7 +65,7 @@ export default function MealStack() {
             <Button
               variant="outline"
               onClick={openSheet}
-              className="w-40 h-48 bg-white border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-3"
+              className="w-32 h-38 md:w-40 md:h-48 bg-white border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-3"
             >
               <div className="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center transition-colors duration-300">
                 <Plus className="w-6 h-6 text-gray-600" />

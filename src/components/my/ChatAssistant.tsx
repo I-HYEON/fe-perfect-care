@@ -13,12 +13,12 @@ export function ChatAssistant() {
             <AvatarImage src="/placeholder.png" alt="코치" />
             <AvatarFallback>코치</AvatarFallback>
           </Avatar>
-          <div className="flex items-center gap-3 text-black dark:text-white">회원님.. 지금 뭐 드시고 계세요..?</div>
+          <div className="flex items-center gap-3 text-black text-left dark:text-white">회원님.. 지금 뭐 드시고 계세요..?</div>
         </div>
 
         <Button variant="default">
           <MessageCircle className="h-6 w-6" />
-          알려주러가기
+          대화
         </Button>
       </div>
     </Link>

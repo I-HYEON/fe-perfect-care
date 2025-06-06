@@ -58,7 +58,7 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
       >
         <div className="flex items-center gap-3 min-h-full">
           {/* Date */}
-          <div className="flex-shrink-0 text-center w-12">
+          <div className="flex-shrink-0 text-center">
             <div
               className={`text-xs font-medium ${
                 isToday ? "text-purple-600 dark:text-purple-400" : "text-muted-foreground"
@@ -94,7 +94,7 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
           </div>
 
           {/* Medication Status */}
-          <div className="flex-shrink-0 w-16">
+          <div className="flex-shrink-0">
             <div className="text-center">
               <div className="text-xs text-muted-foreground mb-1">복약</div>
               <div className="text-xs font-medium">

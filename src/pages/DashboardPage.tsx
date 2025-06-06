@@ -4,10 +4,7 @@ import { MacronutrientsChart } from '@/components/dashboard/MacronutrientsChart'
 import { NutritionGoals } from '@/components/dashboard/NutritionGoals'
 import { UserInfoCard } from '@/components/dashboard/UserInfoCard'
 import { FadeIn } from '@/components/ui/pade-in'
-import {
-  FoodCategory,
-  type MacroNutrients
-} from '@/types/nutrition/type'
+import { FoodCategory, type MacroNutrients } from '@/types/nutrition/type'
 import { Apple, Carrot, Fish, Milk, Wheat } from 'lucide-react'
 
 // 샘플 데이터
@@ -106,14 +103,14 @@ const nutritionGoals = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 p-4 sm:p-6 lg:p-8">
       <FadeIn>
         <div className="max-w-7xl mx-auto space-y-6">
           {/* 헤더 */}
           <DashboardHeader />
 
           {/* 사용자 정보 */}
-          <UserInfoCard/>
+          <UserInfoCard />
 
           {/* 메인 대시보드 그리드 */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
