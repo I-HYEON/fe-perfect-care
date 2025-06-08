@@ -28,7 +28,7 @@ export default function ChatPage() {
   return (
     <div className="h-full bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* 헤더 */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-3 flex justify-between items-center">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-3 flex justify-between items-center">
         <div className="flex">
           <Button variant="ghost" size="icon" className="mr-2" onClick={() => navigate(-1)}>
             <ArrowLeft className="h-5 w-5" />
@@ -40,8 +40,8 @@ export default function ChatPage() {
           </div>
         </div>
 
-        <div>
-          <AlignJustify />
+        <div className='p-3 cursor-pointer'>
+          <AlignJustify className='w-6 h-6'/>
         </div>
       </div>
 

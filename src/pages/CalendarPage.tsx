@@ -13,7 +13,7 @@ export default function CalendarPage() {
       <div className="max-w-7xl mx-auto">
         {/* 주/월 모드 토글탭 */}
         <FadeIn>
-          <div className="flex gap-1 p-1 bg-muted rounded-lg w-fit mb-6">
+          <div className="flex gap-1 p-1 bg-muted rounded-lg w-fit mx-auto mb-4">
             <Button
               variant={mode === 'weekly' ? 'default' : 'ghost'}
               size="sm"
