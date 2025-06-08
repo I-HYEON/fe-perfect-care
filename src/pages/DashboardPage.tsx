@@ -103,9 +103,9 @@ const nutritionGoals = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-2 sm:p-4 lg:p-6">
       <FadeIn>
-        <div className="max-w-7xl mx-auto space-y-6">
+        <div className="max-w-7xl mx-auto space-y-4">
           {/* 헤더 */}
           <DashboardHeader />
 
@@ -113,9 +113,9 @@ export default function DashboardPage() {
           <UserInfoCard />
 
           {/* 메인 대시보드 그리드 */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* 왼쪽 컬럼 */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-4">
               {/* 칼로리 요약과 매크로 영양소 차트 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <MacronutrientsChart

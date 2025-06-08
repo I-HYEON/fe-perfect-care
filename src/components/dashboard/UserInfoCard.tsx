@@ -6,10 +6,10 @@ import { useAuthStore } from '@/stores/useAuthStore'
 
 export function UserInfoCard() {
   const [weightVisible, setWeightVisible] = useState(false)
-  const user  = useAuthStore(state=>state.user)
+  const user = useAuthStore((state) => state.user)
 
   return (
-    <Card className="border-none shadow-none bg-white dark:bg-slate-800">
+    <Card className="border-none shadow-none py-4 bg-white dark:bg-slate-800 flex flex-col gap-2">
       <CardHeader className="flex flex-row items-center justify-between">
         <div className="font-medium">나의 정보</div>
         <Button variant="ghost" size="sm" className="h-4 w-4 p-0 rounded-full">
@@ -34,7 +34,7 @@ export function UserInfoCard() {
             </div>
             <div className="text-left">
               <div className="flex gap-2 text-xs md:text-sm text-slate-500 dark:text-slate-400">
-                현재 체중
+                체중
                 {weightVisible ? (
                   <Eye className="h-4 w-4 cursor-pointer" onClick={() => setWeightVisible(false)} />
                 ) : (

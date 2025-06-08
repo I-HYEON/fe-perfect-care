@@ -50,10 +50,10 @@ export function WeeklyCalendar() {
         </Button>
         <div className="flex justify-center items-center gap-8">
           <div className="text-center">
-            <div className="text-xl font-semibold">
+            <div className="text-sm md:text-xl font-semibold">
               {currentWeek.year}년 {currentWeek.month}월 {currentWeek.weekNumber}주차
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-xs md:text-sm text-muted-foreground">
               {formatDateRange(currentWeek.startDate, currentWeek.endDate)}
             </div>
           </div>
@@ -71,30 +71,30 @@ export function WeeklyCalendar() {
 
       {/* Weekly Summary */}
       <div className="mt-6 p-4 bg-muted/50 rounded-xs">
-        <div className="font-medium mb-3">Weekly Summary</div>
+        <div className="text-sm md:text-lg mb-3">Weekly Summary</div>
         <div className="grid grid-cols-4 gap-4 text-sm">
           <div className="text-center">
-            <div className="text-lg font-bold text-orange-600 dark:text-orange-400">
+            <div className="text-sm md:text-lg font-bold text-orange-600 dark:text-orange-400">
               {currentWeek.data
                 .reduce((sum, day) => sum + day.nutrition.calories, 0)
                 .toLocaleString()}
             </div>
-            <div className="text-muted-foreground">총 칼로리</div>
+            <div className="text-xs md:text-sm text-muted-foreground">총 칼로리</div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-sm md:text-lg font-bold text-purple-600 dark:text-purple-400">
               {currentWeek.data.reduce((sum, day) => sum + day.nutrition.carbs, 0)}g
             </div>
-            <div className="text-muted-foreground">총 탄수화물</div>
+            <div className="text-xs md:text-sm text-muted-foreground">총 탄수화물</div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-sm md:text-lg font-bold text-purple-600 dark:text-purple-400">
               {currentWeek.data.reduce((sum, day) => sum + day.nutrition.protein, 0)}g
             </div>
-            <div className="text-muted-foreground">총 단백질</div>
+            <div className="text-xs md:text-sm text-muted-foreground">총 단백질</div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-green-600 dark:text-green-400">
+            <div className="text-sm md:text-lg font-bold text-green-600 dark:text-green-400">
               {Math.round(
                 (currentWeek.data.reduce((sum, day) => sum + day.medication.completed, 0) /
                   currentWeek.data.reduce((sum, day) => sum + day.medication.total, 0)) *
@@ -102,7 +102,7 @@ export function WeeklyCalendar() {
               )}
               %
             </div>
-            <div className="text-muted-foreground">복약 준수율</div>
+            <div className="text-xs md:text-sm text-muted-foreground">복약 준수율</div>
           </div>
         </div>
       </div>

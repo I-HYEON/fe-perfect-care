@@ -55,7 +55,7 @@ export function NutritionGoals({ goals }: NutritionGoalsProps) {
   }
 
   return (
-    <Card className="h-fit">
+    <Card className="h-fit bg-white dark:bg-gray-800 border-none shadow-none">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Target className="h-5 w-5" />

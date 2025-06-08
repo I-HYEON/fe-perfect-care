@@ -9,7 +9,7 @@ export default function HomePage() {
         <Link to="/login">로그인 바로가기</Link>
       </Button>
       <Button>
-        <Link to="/chats">채팅 바로가기</Link>
+        <Link to="/me">메인 바로가기</Link>
       </Button>
       <PwaInstallButton />
     </div>

@@ -9,11 +9,15 @@ export function ChatAssistant() {
     <Link to="/chat">
       <div className="flex justify-between items-center min-h-24 px-4 rounded-sm bg-white dark:bg-slate-800">
         <div className='flex gap-2'>
-          <Avatar className="h-12 w-12 mr-3 border-2 border-white dark:border-gray-800">
+          <Avatar className="h-12 w-12 mr-1 border-2 border-white dark:border-gray-800">
             <AvatarImage src="/placeholder.png" alt="코치" />
             <AvatarFallback>코치</AvatarFallback>
           </Avatar>
-          <div className="flex items-center gap-3 text-black text-left dark:text-white">회원님.. 지금 뭐 드시고 계세요..?</div>
+          <div className='flex flex-col justify-center text-black text-left dark:text-white text-xs sm:text-sm'>
+            <div>회원님 오늘 뭐드시나요?</div>
+            <div className='text-muted-foreground'>1분 전</div>
+          </div>
+          
         </div>
 
         <Button variant="default">

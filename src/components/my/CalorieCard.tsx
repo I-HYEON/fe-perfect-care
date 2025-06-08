@@ -7,8 +7,8 @@ export function CalorieCard() {
   const percentage = (consumed / target) * 100
 
   return (
-    <Card className="border-none shadow-none bg-white dark:bg-slate-800 overflow-hidden">
-      <CardHeader className="pb-2">
+    <Card className="border-none shadow-none bg-white dark:bg-gray-800 overflow-hidden gap-4">
+      <CardHeader>
         <div className="text-sm sm:text-lg font-medium flex items-center gap-2">
           <Flame className="h-5 w-5 text-orange-500" />
           오늘의 칼로리
@@ -16,7 +16,7 @@ export function CalorieCard() {
       </CardHeader>
       <CardContent className="pt-0 space-y-4">
         <div className="flex items-end justify-between">
-          <div className='text-left'>
+          <div className="text-left">
             <div className="text-lg lg:text-3xl font-bold">{consumed}</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">섭취 칼로리</div>
           </div>
