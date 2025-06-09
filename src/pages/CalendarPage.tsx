@@ -1,3 +1,4 @@
+import { MonthlyCalendar } from '@/components/calendar/monthly/MonthlyCalendar'
 import { WeeklyCalendar } from '@/components/calendar/weekly/WeeklyCalendar'
 import { Button } from '@/components/ui/button'
 import { FadeIn } from '@/components/ui/pade-in'
@@ -6,7 +7,7 @@ import { useState } from 'react'
 type CalendarMode = 'weekly' | 'monthly'
 
 export default function CalendarPage() {
-  const [mode, setMode] = useState<CalendarMode>('weekly')
+  const [mode, setMode] = useState<CalendarMode>('monthly')
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-6 lg:p-8">
@@ -38,9 +39,9 @@ export default function CalendarPage() {
             {mode === 'weekly' ? (
               <WeeklyCalendar />
             ) : (
-              <div className="flex items-center justify-center h-96 text-2xl md:text-3xl lg:text-4xl font-medium">
-                Monthly Canlendar UI
-              </div>
+              // <div className="flex items-center justify-center h-96 text-2xl md:text-3xl lg:text-4xl font-medium">
+              <MonthlyCalendar />
+              // </div>
             )}
           </div>
         </FadeIn>

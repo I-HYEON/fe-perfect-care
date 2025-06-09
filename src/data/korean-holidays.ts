@@ -1,0 +1,38 @@
+import { Holiday } from '@/types/calendar/type'
+
+export const koreanHolidays: Holiday[] = [
+  { date: new Date(2024, 0, 1), name: '신정' },
+  { date: new Date(2024, 1, 9), name: '설날 연휴' },
+  { date: new Date(2024, 1, 10), name: '설날' },
+  { date: new Date(2024, 1, 11), name: '설날 연휴' },
+  { date: new Date(2024, 1, 12), name: '대체공휴일' },
+  { date: new Date(2024, 2, 1), name: '삼일절' },
+  { date: new Date(2024, 3, 10), name: '국회의원선거일' },
+  { date: new Date(2024, 4, 5), name: '어린이날' },
+  { date: new Date(2024, 4, 6), name: '대체공휴일' },
+  { date: new Date(2024, 4, 15), name: '부처님오신날' },
+  { date: new Date(2024, 5, 6), name: '현충일' },
+  { date: new Date(2024, 7, 15), name: '광복절' },
+  { date: new Date(2024, 8, 16), name: '추석 연휴' },
+  { date: new Date(2024, 8, 17), name: '추석' },
+  { date: new Date(2024, 8, 18), name: '추석 연휴' },
+  { date: new Date(2024, 9, 3), name: '개천절' },
+  { date: new Date(2024, 9, 9), name: '한글날' },
+  { date: new Date(2024, 11, 25), name: '크리스마스' },
+  // 2025년
+  { date: new Date(2025, 0, 1), name: '신정' },
+  { date: new Date(2025, 0, 28), name: '설날 연휴' },
+  { date: new Date(2025, 0, 29), name: '설날' },
+  { date: new Date(2025, 0, 30), name: '설날 연휴' },
+  { date: new Date(2025, 2, 1), name: '삼일절' },
+  { date: new Date(2025, 4, 5), name: '어린이날' },
+  { date: new Date(2025, 4, 6), name: '대체공휴일' },
+  { date: new Date(2025, 5, 6), name: '현충일' },
+  { date: new Date(2025, 7, 15), name: '광복절' },
+  { date: new Date(2025, 9, 3), name: '개천절' },
+  { date: new Date(2025, 9, 6), name: '추석 연휴' },
+  { date: new Date(2025, 9, 7), name: '추석' },
+  { date: new Date(2025, 9, 8), name: '추석 연휴' },
+  { date: new Date(2025, 9, 9), name: '한글날' },
+  { date: new Date(2025, 11, 25), name: '크리스마스' }
+]

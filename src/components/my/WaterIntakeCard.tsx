@@ -26,8 +26,7 @@ export function WaterIntakeCard() {
     <Card className="border-none shadow-none bg-white dark:bg-slate-800">
       <CardHeader className="flex flex-row items-center justify-between my-2">
         <div className="text-sm sm:text-lg flex items-center gap-2">
-          <Droplets className="hidden sm:block h-5 w-5 text-blue-500" />
-          물 섭취량
+          <Droplets className="hidden sm:block h-5 w-5 text-blue-500" />물 섭취량
         </div>
         <span className="text-sm font-medium">
           {waterGlasses}/{totalGlasses}잔
@@ -68,9 +67,11 @@ export function WaterIntakeCard() {
           />
         </div>
 
-        <div className="text-left text-sm text-slate-500 dark:text-slate-400 mb-2">{getMessage()}</div>
+        <div className="text-left text-sm text-slate-500 dark:text-slate-400 mb-2">
+          {getMessage()}
+        </div>
 
-        <hr className='mb-4'/>
+        <hr className="mb-4" />
 
         <div className="flex justify-between">
           <CoffeeCounter />

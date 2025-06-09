@@ -1,7 +1,7 @@
-import { MealPhotos } from "./MealPhotos"
-import { MedicationStatus } from "./MedicationStatus"
-import { NutritionSummary } from "./NutritionSummary"
-import { MealData } from "./type"
+import { MealData } from '../type'
+import { MealPhotos } from './MealPhotos'
+import { MedicationStatus } from './MedicationStatus'
+import { NutritionSummary } from './NutritionSummary'
 
 interface WeeklyDayCardProps {
   data: MealData
@@ -10,7 +10,7 @@ interface WeeklyDayCardProps {
 
 export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
   const date = new Date(data.date)
-  const dayName = date.toLocaleDateString("ko-KR", { weekday: "short" })
+  const dayName = date.toLocaleDateString('ko-KR', { weekday: 'short' })
   const dayNumber = date.getDate()
 
   return (
@@ -20,19 +20,21 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
         className={`
         hidden lg:block
         bg-card border rounded-lg p-3 space-y-3 transition-all hover:shadow-md
-        ${isToday ? "ring-2 ring-purple-500 dark:ring-purple-400" : ""}
+        ${isToday ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}
       `}
       >
         {/* Date Header */}
         <div className="text-center">
           <div
             className={`text-xs font-medium ${
-              isToday ? "text-purple-600 dark:text-purple-400" : "text-muted-foreground"
+              isToday ? 'text-purple-600 dark:text-purple-400' : 'text-muted-foreground'
             }`}
           >
             {dayName}
           </div>
-          <div className={`text-lg font-bold ${isToday ? "text-purple-600 dark:text-purple-400" : "text-foreground"}`}>
+          <div
+            className={`text-lg font-bold ${isToday ? 'text-purple-600 dark:text-purple-400' : 'text-foreground'}`}
+          >
             {dayNumber}
           </div>
         </div>
@@ -53,7 +55,7 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
         block lg:hidden
         bg-zinc-50 dark:bg-zinc-900 rounded-xs p-3 transition-all hover:shadow-md
         min-h-24
-        ${isToday ? "ring-2 ring-purple-500 dark:ring-purple-400" : ""}
+        ${isToday ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}
       `}
       >
         <div className="flex items-center gap-3 min-h-full">
@@ -61,13 +63,13 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
           <div className="flex-shrink-0 text-center">
             <div
               className={`text-xs font-medium ${
-                isToday ? "text-purple-600 dark:text-purple-400" : "text-muted-foreground"
+                isToday ? 'text-purple-600 dark:text-purple-400' : 'text-muted-foreground'
               }`}
             >
               {dayName}
             </div>
             <div
-              className={`text-lg font-bold ${isToday ? "text-purple-600 dark:text-purple-400" : "text-foreground"}`}
+              className={`text-lg font-bold ${isToday ? 'text-purple-600 dark:text-purple-400' : 'text-foreground'}`}
             >
               {dayNumber}
             </div>
@@ -84,11 +86,17 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs text-muted-foreground">칼로리</span>
-              <span className="text-sm font-bold text-orange-600 dark:text-orange-400">{data.nutrition.calories}</span>
+              <span className="text-sm font-bold text-orange-600 dark:text-orange-400">
+                {data.nutrition.calories}
+              </span>
             </div>
             <div className="flex gap-3 text-xs">
-              <span className="text-purple-600 dark:text-purple-400">탄 {data.nutrition.carbs}g</span>
-              <span className="text-purple-600 dark:text-purple-400">단 {data.nutrition.protein}g</span>
+              <span className="text-purple-600 dark:text-purple-400">
+                탄 {data.nutrition.carbs}g
+              </span>
+              <span className="text-purple-600 dark:text-purple-400">
+                단 {data.nutrition.protein}g
+              </span>
               <span className="text-purple-600 dark:text-purple-400">지 {data.nutrition.fat}g</span>
             </div>
           </div>
@@ -104,10 +112,10 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
                 <div
                   className={`h-1 rounded-full transition-all ${
                     data.medication.completed === data.medication.total
-                      ? "bg-green-500"
+                      ? 'bg-green-500'
                       : data.medication.completed > 1
-                        ? "bg-orange-500"
-                        : "bg-red-500"
+                        ? 'bg-orange-500'
+                        : 'bg-red-500'
                   }`}
                   style={{ width: `${(data.medication.completed / data.medication.total) * 100}%` }}
                 />

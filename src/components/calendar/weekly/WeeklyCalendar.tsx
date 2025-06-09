@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { WeekData } from './type'
 import { generateWeekData } from '@/utils/generateWeekData'
-import { WeeklyDayCard } from './WeeklyDayCard'
+import { WeeklyDayCard } from './weekly-calendar/WeeklyDayCard'
 
 const weeklyData: WeekData[] = [
   generateWeekData(1, '2024-01-01'),
@@ -41,7 +41,7 @@ export function WeeklyCalendar() {
       {/* Week Header with Navigation */}
       <div className="flex items-center justify-between">
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
           onClick={goToPreviousWeek}
           disabled={currentWeekIndex === 0}
@@ -60,7 +60,7 @@ export function WeeklyCalendar() {
         </div>
 
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
           onClick={goToNextWeek}
           disabled={currentWeekIndex === weeklyData.length - 1}
