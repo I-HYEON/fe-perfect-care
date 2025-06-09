@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { Coffee, Plus, Minus } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useState } from 'react'
+import { Coffee, Plus, Minus } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 
 export function CoffeeCounter() {
   const [count, setCount] = useState(0)
@@ -15,10 +15,10 @@ export function CoffeeCounter() {
   }
 
   const getMessage = () => {
-    if (count === 0) return "아직 커피를 마시지 않았어요"
-    if (count <= 2) return "적당한 커피 섭취량이에요! ☕"
-    if (count <= 4) return "커피를 좀 많이 마셨네요!"
-    return "오늘 커피를 너무 많이 마셨어요! 😵"
+    if (count === 0) return '아직 커피를 마시지 않았어요'
+    if (count <= 2) return '적당한 커피 섭취량이에요! ☕'
+    if (count <= 4) return '커피를 좀 많이 마셨네요!'
+    return '오늘 커피를 너무 많이 마셨어요! 😵'
   }
 
   return (
@@ -82,7 +82,9 @@ export function CoffeeCounter() {
               </button>
             </div>
 
-            <div className="text-sm text-amber-700 text-center bg-amber-50 p-3 rounded-lg">{getMessage()}</div>
+            <div className="text-sm text-amber-700 text-center bg-amber-50 p-3 rounded-lg">
+              {getMessage()}
+            </div>
           </div>
         </DialogContent>
       </Dialog>

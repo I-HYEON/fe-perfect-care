@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { WeekData } from './type'
 import { generateWeekData } from '@/utils/generateWeekData'
-import { WeeklyDayCard } from './WeeklyDayCard'
+import { WeeklyDayCard } from './weekly-calendar/WeeklyDayCard'
 
 const weeklyData: WeekData[] = [
   generateWeekData(1, '2024-01-01'),

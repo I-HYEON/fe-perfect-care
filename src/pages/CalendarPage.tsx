@@ -1,3 +1,4 @@
+import { MonthlyCalendar } from '@/components/calendar/monthly/MonthlyCalendar'
 import { WeeklyCalendar } from '@/components/calendar/weekly/WeeklyCalendar'
 import { Button } from '@/components/ui/button'
 import { FadeIn } from '@/components/ui/pade-in'
@@ -39,7 +40,7 @@ export default function CalendarPage() {
               <WeeklyCalendar />
             ) : (
               <div className="flex items-center justify-center h-96 text-2xl md:text-3xl lg:text-4xl font-medium">
-                Monthly Canlendar UI
+                <MonthlyCalendar />
               </div>
             )}
           </div>
