@@ -1,11 +1,8 @@
 import * as React from 'react'
 import { format } from 'date-fns'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { CalendarDays } from 'lucide-react'
 import { sampleDietData } from '@/data/sample-diet-data'
 import { useMobile } from '@/hooks/useMobile'
 import { DietData } from '@/types/calendar/type'
-import { Legend } from './monthly-calendar/Legend'
 import { DietDetail } from './monthly-calendar/DietDetail'
 import { CustomCalendar } from './monthly-calendar/CustomCalendar'
 
@@ -39,7 +36,7 @@ export function MonthlyCalendar() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-10 border-none">
+    <div className="w-full max-w-4xl mx-auto mt-4 border-none">
       <div>
         <CustomCalendar
           dietData={dietData}

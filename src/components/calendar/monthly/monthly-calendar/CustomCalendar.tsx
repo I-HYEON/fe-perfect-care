@@ -19,9 +19,9 @@ interface CustomCalendarProps {
 export function CustomCalendar({
   dietData,
   selectedDate,
-  setSelectedDate,
+  // setSelectedDate,
   activeDate,
-  setActiveDate,
+  // setActiveDate,
   onDateClick
 }: CustomCalendarProps) {
   const [currentMonth, setCurrentMonth] = React.useState(new Date())
@@ -65,15 +65,15 @@ export function CustomCalendar({
       <button
         onClick={() => onDateClick(date)}
         className={`
-          relative w-full h-14 sm:h-16 p-1 rounded-md transition-colors
+          relative w-full h-24 md:h-28 p-1 rounded-md transition-colors
           hover:bg-accent hover:text-accent-foreground
           focus:bg-accent focus:text-accent-foreground
-          ${isSelected ? 'bg-primary text-primary-foreground' : ''}
+          ${isSelected ? 'bg-blue-200 text-primary dark:bg-primary dark:text-primary-foreground' : ''}
           ${isToday ? 'bg-accent text-accent-foreground' : ''}
-          ${isActive ? 'ring-2 ring-blue-500 dark:ring-blue-400' : ''}
+          ${isActive ? 'ring-1 ring-blue-500 dark:ring-blue-400' : ''}
         `}
       >
-        <div className="flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col items-start justify-start h-full">
           <span
             className={`text-sm font-medium ${
               holiday ? 'text-red-600 dark:text-red-400' : ''

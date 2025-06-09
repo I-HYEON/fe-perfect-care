@@ -41,7 +41,7 @@ export function WeeklyCalendar() {
       {/* Week Header with Navigation */}
       <div className="flex items-center justify-between">
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
           onClick={goToPreviousWeek}
           disabled={currentWeekIndex === 0}
@@ -60,7 +60,7 @@ export function WeeklyCalendar() {
         </div>
 
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
           onClick={goToNextWeek}
           disabled={currentWeekIndex === weeklyData.length - 1}
