@@ -20,7 +20,7 @@ export function SupplementsCard() {
 
   return (
     <Card className="border-none shadow-none bg-white dark:bg-slate-800">
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-center justify-between px-4">
         <div className="text-sm sm:text-lg font-medium flex items-center gap-2">
           <Pill className="h-5 w-5 hidden sm:block text-purple-500" />
           영양제
@@ -30,7 +30,7 @@ export function SupplementsCard() {
           <span className="hidden sm:block">추가</span>
         </Button>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="px-2 py-0">
         <div className="space-y-2">
           {supplements.map((supplement) => (
             <div

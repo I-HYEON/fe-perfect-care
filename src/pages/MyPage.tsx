@@ -5,18 +5,30 @@ import { SupplementsCard } from '@/components/my/SupplementsCard'
 import { WaterIntakeCard } from '@/components/my/WaterIntakeCard'
 import { FadeIn } from '@/components/ui/pade-in'
 import { useAuthStore } from '@/stores/useAuthStore'
+import { AlignJustify } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export default function MyPage() {
+  const navigate = useNavigate()
   const user = useAuthStore((state) => state.user)
+  const handleSettingsButtonClick = () => {
+    navigate('/settings')
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 mb-12 p-2 sm:p-4 lg:p-6">
       <FadeIn>
         {/* 헤더 */}
-        <div className="my-2">
-          <div className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">
-            안녕하세요, {user?.name?.slice(1, 3) || '회원'}님!
+        <div className="my-2 py-2 px-4 flex items-center justify-between">
+          <div className="text-left">
+            <div className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">
+              안녕하세요, {user?.name?.slice(1, 3) || '회원'}님!
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">오늘도 건강한 하루되세요</div>
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">오늘도 건강한 하루되세요</div>
+          <div className="cursor-pointer" onClick={handleSettingsButtonClick}>
+            <AlignJustify />
+          </div>
         </div>
 
         <div className="flex flex-col space-y-2">

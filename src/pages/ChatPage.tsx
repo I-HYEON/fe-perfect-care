@@ -40,8 +40,8 @@ export default function ChatPage() {
           </div>
         </div>
 
-        <div className='p-3 cursor-pointer'>
-          <AlignJustify className='w-6 h-6'/>
+        <div className="p-3 cursor-pointer">
+          <AlignJustify className="w-6 h-6" />
         </div>
       </div>
 

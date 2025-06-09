@@ -13,12 +13,12 @@ export default function CalendarPage() {
       <div className="max-w-7xl mx-auto">
         {/* 주/월 모드 토글탭 */}
         <FadeIn>
-          <div className="flex gap-1 p-1 bg-muted rounded-lg w-fit mx-auto mb-4">
+          <div className="flex gap-1 p-1 bg-muted rounded-lg w-full mb-4">
             <Button
               variant={mode === 'weekly' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setMode('weekly')}
-              className="px-4 py-2"
+              className="w-1/2 px-4 py-2"
             >
               Weekly
             </Button>
@@ -26,7 +26,7 @@ export default function CalendarPage() {
               variant={mode === 'monthly' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setMode('monthly')}
-              className="px-4 py-2"
+              className="w-1/2 px-4 py-2"
             >
               Monthly
             </Button>

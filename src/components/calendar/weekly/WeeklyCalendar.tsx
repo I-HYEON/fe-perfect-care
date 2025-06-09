@@ -37,7 +37,7 @@ export function WeeklyCalendar() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 my-8">
       {/* Week Header with Navigation */}
       <div className="flex items-center justify-between">
         <Button
@@ -70,8 +70,8 @@ export function WeeklyCalendar() {
       </div>
 
       {/* Weekly Summary */}
-      <div className="mt-6 p-4 bg-muted/50 rounded-xs">
-        <div className="text-sm md:text-lg mb-3">Weekly Summary</div>
+      <div className="mt-2 p-4 bg-muted/50 rounded-xs">
+        {/* <div className="text-sm md:text-lg mb-3">Weekly Summary</div> */}
         <div className="grid grid-cols-4 gap-4 text-sm">
           <div className="text-center">
             <div className="text-sm md:text-lg font-bold text-orange-600 dark:text-orange-400">
