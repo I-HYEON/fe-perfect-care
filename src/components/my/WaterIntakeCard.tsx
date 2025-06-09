@@ -1,6 +1,9 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Droplets } from 'lucide-react'
 import { useState } from 'react'
+import { CoffeeCounter } from './water-intake-card/CoffeeCounter'
+import { DrinkCounter } from './water-intake-card/DrinkCounter'
+import { AlcoholCounter } from './water-intake-card/AlcoholCounter'
 
 export function WaterIntakeCard() {
   const [waterGlasses, setWaterGlasses] = useState(0)
@@ -69,9 +72,10 @@ export function WaterIntakeCard() {
 
         <hr className='mb-4'/>
 
-        <div className='text-left flex flex-col gap-2'>
-            <div className='flex gap-2 items-center'><div className='bg-amber-800 w-8 h-12 rounded-lg'></div>Coffe UI</div>
-            <div className='flex gap-2 items-center'><div className='bg-slate-800 w-8 h-12 rounded-lg'></div>Drink UI</div>
+        <div className="flex justify-between">
+          <CoffeeCounter />
+          <DrinkCounter />
+          <AlcoholCounter />
         </div>
       </CardContent>
     </Card>
