@@ -58,7 +58,7 @@ export function FoodCategoryBreakdown({ categoryData }: FoodCategoryBreakdownPro
   return (
     <Card className="h-fit bg-white dark:bg-slate-800 border-none shadow-none">
       <CardHeader>
-        <CardTitle className="text-lg">음식 카테고리별 분석</CardTitle>
+        <CardTitle className="text-left">음식 카테고리별 분석</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">

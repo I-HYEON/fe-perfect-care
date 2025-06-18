@@ -19,7 +19,7 @@ export function SupplementsCard() {
   }
 
   return (
-    <Card className="border-none shadow-none bg-white dark:bg-slate-800">
+    <Card className="border-none shadow-none bg-white dark:bg-slate-800 py-2 gap-2">
       <CardHeader className="flex flex-row items-center justify-between px-4">
         <div className="text-sm sm:text-lg font-medium flex items-center gap-2">
           <Pill className="h-5 w-5 hidden sm:block text-purple-500" />
@@ -61,7 +61,7 @@ export function SupplementsCard() {
           ))}
         </div>
 
-        <div className="mt-4 text-left text-sm text-slate-500">
+        <div className="mt-4 text-left text-xs text-slate-500">
           {supplements.filter((s) => s.taken).length === 0
             ? '오늘 복용한 영양제가 없습니다'
             : `${supplements.filter((s) => s.taken).length}/${supplements.length}개 복용 완료`}

@@ -4,7 +4,8 @@ import { CalendarDays } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { type MealData, mealIcons, mealLabels, mealColors } from '@/types/calendar/type'
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
+import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
+import { DialogDescription } from '@radix-ui/react-dialog'
 
 interface DietDetailProps {
   open: boolean
@@ -23,7 +24,7 @@ export function DietDetail({ open, onOpenChange, selectedDate, meals, isMobile }
   const ModalContent = () => (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold mb-2 dark:text-white">{formattedDate}</h3>
+        <h3 className="text-sm mb-2 dark:text-white">{formattedDate}</h3>
         {meals.length > 0 ? (
           <div className="space-y-4">
             <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
@@ -94,6 +95,7 @@ export function DietDetail({ open, onOpenChange, selectedDate, meals, isMobile }
         <DrawerContent className="dark:bg-gray-900 dark:border-gray-800">
           <DrawerHeader>
             <DrawerTitle className="dark:text-white">식단 상세</DrawerTitle>
+            <DrawerDescription className="dark:text-gray-400 text-sm">선택한 날짜의 식단 정보를 확인하세요</DrawerDescription>
           </DrawerHeader>
           <div className="px-4 pb-4">
             <ModalContent />
@@ -108,6 +110,7 @@ export function DietDetail({ open, onOpenChange, selectedDate, meals, isMobile }
       <DialogContent className="max-w-md dark:bg-gray-900 dark:border-gray-800">
         <DialogHeader>
           <DialogTitle className="dark:text-white">식단 상세</DialogTitle>
+          <DialogDescription className="dark:text-gray-400 text-sm">선택한 식단의 상세 정보를 확인하세요.</DialogDescription>
         </DialogHeader>
         <ModalContent />
       </DialogContent>

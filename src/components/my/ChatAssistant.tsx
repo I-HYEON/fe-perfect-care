@@ -5,11 +5,12 @@ import { Avatar } from '../ui/avatar'
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 
 export function ChatAssistant() {
+
   return (
     <Link to="/chat">
       <div className="flex justify-between items-center min-h-24 px-4 rounded-sm bg-white dark:bg-slate-800">
         <div className='flex gap-2'>
-          <Avatar className="h-12 w-12 mr-1 border-2 border-white dark:border-gray-800">
+          <Avatar className="h-14 w-14 mr-1 border-2 dark:border-gray-800">
             <AvatarImage src="/placeholder.png" alt="코치" />
             <AvatarFallback>코치</AvatarFallback>
           </Avatar>

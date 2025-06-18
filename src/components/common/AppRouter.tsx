@@ -13,6 +13,7 @@ import LoadingPage from '@/pages/LoadingPage'
 import DashboardPage from '@/pages/DashboardPage'
 import CalendarPage from '@/pages/CalendarPage'
 import MyPage from '@/pages/MyPage'
+import TodayMealsPage from '@/pages/TodayMealsPage'
 
 interface ProtectedRouteProps {
   children: React.ReactNode
@@ -135,6 +136,14 @@ export default function AppRouter() {
           element={
             <ProtectedRoute>
               <CalendarPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/meals-record/:meals-day"
+          element={
+            <ProtectedRoute>
+              <TodayMealsPage />
             </ProtectedRoute>
           }
         />

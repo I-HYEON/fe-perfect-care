@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { MealData } from '../type'
 import { MealPhotos } from './MealPhotos'
 import { MedicationStatus } from './MedicationStatus'
@@ -12,11 +13,13 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
   const date = new Date(data.date)
   const dayName = date.toLocaleDateString('ko-KR', { weekday: 'short' })
   const dayNumber = date.getDate()
+  const navigate = useNavigate()
 
   return (
     <>
       {/* Desktop/Tablet Card */}
       <div
+        onClick={()=>navigate('/meals-record/1')}
         className={`
         hidden lg:block
         bg-card border rounded-lg p-3 space-y-3 transition-all hover:shadow-md
@@ -51,8 +54,9 @@ export function WeeklyDayCard({ data, isToday }: WeeklyDayCardProps) {
 
       {/* Mobile Card */}
       <div
+        onClick={()=>navigate('/meals-record/1')}
         className={`
-        block lg:hidden
+        block cursor-pointer lg:hidden
         bg-zinc-50 dark:bg-zinc-900 rounded-xs p-3 transition-all hover:shadow-md
         min-h-24
         ${isToday ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}
