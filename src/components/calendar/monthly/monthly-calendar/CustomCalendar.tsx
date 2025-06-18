@@ -14,6 +14,7 @@ interface CustomCalendarProps {
   activeDate: Date | undefined
   setActiveDate: (date: Date | undefined) => void
   onDateClick: (date: Date) => void
+  disabled?: boolean
 }
 
 export function CustomCalendar({
@@ -22,7 +23,8 @@ export function CustomCalendar({
   // setSelectedDate,
   activeDate,
   // setActiveDate,
-  onDateClick
+  onDateClick,
+  disabled=false
 }: CustomCalendarProps) {
   const [currentMonth, setCurrentMonth] = React.useState(new Date())
 
@@ -46,10 +48,12 @@ export function CustomCalendar({
   const weekDays = ['일', '월', '화', '수', '목', '금', '토']
 
   const goToPreviousMonth = () => {
+    if (disabled) return
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))
   }
 
   const goToNextMonth = () => {
+    if (disabled) return
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))
   }
 
@@ -63,17 +67,19 @@ export function CustomCalendar({
 
     return (
       <button
-        onClick={() => onDateClick(date)}
+        onClick={() => !disabled && onDateClick(date)}
+        disabled={disabled}
+        tabIndex={disabled ? -1 : 0} //disabled일 때 포커스 불가가
         className={`
-          relative w-full h-24 md:h-28 p-1 rounded-md transition-colors
+          relative w-full h-26 md:h-28 p-1 rounded-sm transition-colors
           hover:bg-accent hover:text-accent-foreground
           focus:bg-accent focus:text-accent-foreground
-          ${isSelected ? 'bg-blue-200 text-primary dark:bg-primary dark:text-primary-foreground' : ''}
+          ${isSelected ? 'bg-blue-200 text-primary dark:bg-muted-foreground dark:text-primary-foreground' : ''}
           ${isToday ? 'bg-accent text-accent-foreground' : ''}
           ${isActive ? 'ring-1 ring-blue-500 dark:ring-blue-400' : ''}
         `}
       >
-        <div className="flex flex-col items-start justify-start h-full">
+        <div className="flex flex-col items-center justify-start h-full">
           <span
             className={`text-sm font-medium ${
               holiday ? 'text-red-600 dark:text-red-400' : ''
@@ -103,7 +109,7 @@ export function CustomCalendar({
   }
 
   return (
-    <div className="rounded-md border-none shadow-none w-full p-4">
+    <div className="rounded-md border-none shadow-none w-full">
       {/* 헤더 */}
       <div className="flex justify-between items-center mb-4">
         <Button variant="ghost" size="sm" onClick={goToPreviousMonth} className="h-7 w-7 p-0">

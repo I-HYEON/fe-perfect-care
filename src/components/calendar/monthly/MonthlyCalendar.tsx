@@ -5,12 +5,14 @@ import { useMobile } from '@/hooks/useMobile'
 import { DietData } from '@/types/calendar/type'
 import { DietDetail } from './monthly-calendar/DietDetail'
 import { CustomCalendar } from './monthly-calendar/CustomCalendar'
+import { FadeIn } from '@/components/ui/pade-in'
+import { useState } from 'react';
 
 export function MonthlyCalendar() {
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date())
-  const [activeDate, setActiveDate] = React.useState<Date | undefined>()
-  const [modalOpen, setModalOpen] = React.useState(false)
-  const [dietData, setDietData] = React.useState<DietData>({})
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
+  const [activeDate, setActiveDate] = useState<Date | undefined>()
+  const [modalOpen, setModalOpen] = useState(false)
+  const [dietData, setDietData] = useState<DietData>({})
   const isMobile = useMobile()
 
   // 샘플 식단 데이터 로드
@@ -36,26 +38,29 @@ export function MonthlyCalendar() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-4 border-none">
-      <div>
-        <CustomCalendar
-          dietData={dietData}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          activeDate={activeDate}
-          setActiveDate={setActiveDate}
-          onDateClick={handleDateClick}
+    <FadeIn>
+      <div className="w-full mt-4 max-w-4xl mx-auto border-none">
+        <div>
+          <CustomCalendar
+            dietData={dietData}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            activeDate={activeDate}
+            setActiveDate={setActiveDate}
+            onDateClick={handleDateClick}
+            disabled={modalOpen}
+          />
+        </div>
+
+        <DietDetail
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          selectedDate={activeDate}
+          meals={getDietData(activeDate)}
+          isMobile={isMobile}
         />
       </div>
-
-      <DietDetail
-        open={modalOpen}
-        onOpenChange={setModalOpen}
-        selectedDate={activeDate}
-        meals={getDietData(activeDate)}
-        isMobile={isMobile}
-      />
-    </div>
+    </FadeIn>
   )
 }
 

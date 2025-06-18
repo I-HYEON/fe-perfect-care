@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cell } from 'recharts'
 import type { MacroNutrients } from '@/types/nutrition/type'
-import { Donut } from 'lucide-react'
+import { Check } from 'lucide-react'
 
 interface MacronutrientsChartProps {
   macronutrients: MacroNutrients
@@ -21,19 +21,19 @@ export function MacronutrientsChart({
     {
       name: '탄수화물',
       value: carbPercentage,
-      color: '#3b82f6',
+      color: '#B84EF5',
       amount: `${macronutrients.carbohydrates.min_value}-${macronutrients.carbohydrates.max_value}${macronutrients.carbohydrates.unit}`
     },
     {
       name: '단백질',
       value: proteinPercentage,
-      color: '#ef4444',
+      color: '#00FAA5',
       amount: `${macronutrients.protein.min_value}-${macronutrients.protein.max_value}${macronutrients.protein.unit}`
     },
     {
       name: '지방',
       value: fatPercentage,
-      color: '#f59e0b',
+      color: '#FF6A00',
       amount: `${macronutrients.fat.min_value}-${macronutrients.fat.max_value}${macronutrients.fat.unit}`
     }
   ]
@@ -41,8 +41,8 @@ export function MacronutrientsChart({
   return (
     <Card className="h-full bg-white dark:bg-gray-800 border-none shadow-none">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Donut className="h-5 w-5" />
+        <CardTitle className="flex items-center gap-2">
+          <Check className="h-5 w-5" />
           탄단지 영양소 비율
         </CardTitle>
       </CardHeader>
@@ -50,30 +50,23 @@ export function MacronutrientsChart({
         <div className="grid grid-cols-1 gap-6">
           {/* 파이 차트 */}
           <ChartContainer
-            config={{
-              carbohydrates: { label: '탄수화물', color: '#3b82f6' },
-              protein: { label: '단백질', color: '#ef4444' },
-              fat: { label: '지방', color: '#f59e0b' }
-            }}
-            className="h-full"
+            config={
+              {
+                // carbohydrates: { label: '탄수화물', color: '#7FC8F8' },
+                // protein: { label: '단백질', color: '#FF8AAE' },
+                // fat: { label: '지방', color: '#A1E3D8' }
+              }
+            }
+            className="w-full h-[160px] mx-auto flex justify-center items-center"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={data}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={40}
-                  outerRadius={80}
-                  dataKey="value"
-                >
-                  {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <ChartTooltip content={<ChartTooltipContent />} />
-              </PieChart>
-            </ResponsiveContainer>
+            <PieChart width={210} height={140}>
+              <Pie data={data} cx="50%" cy="50%" innerRadius={40} outerRadius={80} dataKey="value">
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <ChartTooltip content={<ChartTooltipContent />} />
+            </PieChart>
           </ChartContainer>
 
           {/* 범례 및 상세 정보 */}

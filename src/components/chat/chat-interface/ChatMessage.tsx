@@ -32,7 +32,7 @@ export default function ChatMessage({ message, persona, currentUserId }: ChatMes
     <div className={`flex ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>
       {!isCurrentUser && (
         <div className="flex-shrink-0 mr-3 cursor-pointer" onClick={() => navigate("/persona-profile/1")}>
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-12 w-12 border">
             <AvatarImage src={persona.avatar || '/placeholder.svg'} alt={persona.name} />
             <AvatarFallback className={`bg-${persona.color}-200 text-${persona.color}-700`}>
               {getInitials(persona.name)}

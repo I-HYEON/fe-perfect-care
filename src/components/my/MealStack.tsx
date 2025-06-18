@@ -1,35 +1,42 @@
-import { Plus } from 'lucide-react'
+import { ForkKnife, Pencil, Plus, Search, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import burgerImg from '@/assets/burger.jpeg'
 import pastaImg from '@/assets/pasta.jpg'
 import { useState } from 'react'
-import BottomSheet from './BottomSheet'
+import { useNavigate } from 'react-router-dom'
+import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from '../ui/drawer'
 
 export default function MealStack() {
   const photos = [
     {
       id: 1,
       src: burgerImg,
-      alt: 'Landscape photo 1'
+      alt: 'photo 1'
     },
     {
       id: 2,
       src: pastaImg,
-      alt: 'Portrait photo 2'
+      alt: 'photo 2'
     },
     {
       id: 3,
       src: burgerImg,
-      alt: 'Street photo 3'
+      alt: 'photo 3'
     }
   ]
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
+  const navigate = useNavigate()
   // 바텀 시트 열기
-  const openSheet = () => {
-    setIsMenuOpen(true)
-    document.body.style.overflow = 'hidden' // 배경 스크롤 방지
+  // const openSheet = () => {
+  //   setIsMenuOpen(true)
+  //   document.body.style.overflow = 'hidden' // 배경 스크롤 방지
+  // }
+
+  const handlePlusClick = () => {
+    setModalOpen(true)
   }
 
   return (
@@ -41,6 +48,7 @@ export default function MealStack() {
           {photos.map((photo, index) => (
             <div
               key={photo.id}
+              onClick={() => navigate(`/meals-record/${photo.id}`)}
               className="relative group cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10"
               style={{
                 transform: `rotate(${(index % 2 === 0 ? 1 : -1) * (Math.random() * 6 + 2)}deg)`,
@@ -68,7 +76,7 @@ export default function MealStack() {
           >
             <Button
               variant="outline"
-              onClick={openSheet}
+              onClick={handlePlusClick}
               className="w-28 h-34 md:w-40 md:h-48 bg-white border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-3"
             >
               <div className="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center transition-colors duration-300">
@@ -82,7 +90,37 @@ export default function MealStack() {
         </div>
       </div>
 
-      {isMenuOpen && <BottomSheet isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
+      {/* {isMenuOpen && <BottomSheet isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />} */}
+      {modalOpen && (
+        <Drawer open={modalOpen} onOpenChange={setModalOpen}>
+          <DrawerContent className="dark:bg-gray-900 dark:border-gray-800">
+            <DrawerHeader>
+              <DrawerTitle className="dark:text-white hidden">메뉴</DrawerTitle>
+              <DrawerDescription className="dark:text-gray-400 text-sm hidden">
+                회원님의 식단을 알려주세요
+              </DrawerDescription>
+            </DrawerHeader>
+            <div className="px-4 pb-4">
+              <div className="space-y-4">
+                <MenuItem icon={<Pencil className="mr-3 h-5 w-5" />} text="직접 기록하기" />
+                <MenuItem icon={<User className="mr-3 h-5 w-5" />} text="코치쌤한테 알리기" />
+                <MenuItem icon={<Search className="mr-3 h-5 w-5" />} text="음식 검색하기" />
+                <MenuItem icon={<ForkKnife className="mr-3 h-5 w-5" />} text="식단 불러오기" />
+              </div>
+            </div>
+          </DrawerContent>
+        </Drawer>
+      )}
     </div>
+  )
+}
+
+// 메뉴 아이템 컴포넌트
+function MenuItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <button className="flex items-center w-full p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-gray-100">
+      {icon}
+      {text}
+    </button>
   )
 }

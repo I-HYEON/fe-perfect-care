@@ -56,7 +56,7 @@ export default function SettingsPage() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-4 pb-14">
       <FadeIn>
-        <div className="mx-auto max-w-md px-4 py-4">
+        <div className="mx-auto max-w-md px-4">
           {/* 헤더 */}
           <div className="mb-6 flex justify-between">
             <div className="cursor-pointer" onClick={() => navigate(-1)}>

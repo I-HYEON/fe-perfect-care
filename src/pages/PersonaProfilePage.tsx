@@ -14,19 +14,13 @@ import { useNavigate } from 'react-router-dom'
 
 const personaData = {
   id: 1,
-  name: '김영희',
+  name: '이댕댕',
   statusMessage: '우리 함께 저속노화로 행복한 삶 🥗',
-  bio: '안녕하세요! ae복지사 김영희입니다. 10년 경력의 임상영양사로 활동하며 다양한 식이요법과 영양 상담을 진행해왔습니다. 개인 맞춤형 식단 설계와 건강한 식습관 형성을 도와드립니다. 영양과 관련된 어떤 질문이든 편하게 물어보세요!',
+  bio: '안녕하세요! ae 식습관 코치 이댕댕입니다. 개인 맞춤형 식단 설계와 건강한 식습관 형성을 도와드립니다. 영양과 관련된 어떤 질문이든 편하게 물어보세요!',
   profileImage: '/placeholder.png',
   backgroundImage: '/placeholder.svg?key=1lh1j',
   online: true,
-  previousImages: [
-    '/placeholder.png',
-    image3,
-    image4,
-    image2,
-    image1
-  ]
+  previousImages: ['/placeholder.png', image3, image4, image2, image1]
 }
 
 export default function PersonaProfilePage() {
@@ -46,7 +40,7 @@ export default function PersonaProfilePage() {
 
   const handleStartChat = () => {
     // 채팅방으로 이동. 이동 후 뒤로가기했을 때 현재 페이지로 오지 않도록 replace 설정
-    navigate("/chat/1",{replace: true})
+    navigate('/chat', { replace: true })
   }
 
   const toggleNotification = () => {

@@ -55,7 +55,7 @@ export function NutritionGoals({ goals }: NutritionGoalsProps) {
   }
 
   return (
-    <Card className="h-fit bg-white dark:bg-gray-865
+    <Card className="h-fit bg-white dark:bg-gray-800
     900 border-none shadow-none">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
@@ -108,7 +108,7 @@ export function NutritionGoals({ goals }: NutritionGoalsProps) {
         </div>
 
         {/* 전체 요약 */}
-        <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg mb-8">
           <div className="text-sm font-medium text-gray-900 dark:text-white mb-2">전체 목표 달성률</div>
           <div className="flex items-center gap-4">
             <div className="text-2xl font-bold text-gray-900 dark:text-white">

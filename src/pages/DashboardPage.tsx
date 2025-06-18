@@ -103,9 +103,9 @@ const nutritionGoals = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-2 sm:p-4 lg:p-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 py-2 px-4">
       <FadeIn>
-        <div className="max-w-7xl mx-auto space-y-4">
+        <div className="max-w-7xl space-y-4">
           {/* 헤더 */}
           <DashboardHeader />
 
